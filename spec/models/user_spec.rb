@@ -24,7 +24,7 @@ RSpec.describe User, type: :model do
         expect(user).to be_invalid
         expect(user.errors.full_messages).to include("メールアドレスを入力してください")
       end
-  
+
       it "emailは重複して登録できない" do
         create(:user, email: "sample_1@example.com")
         user2 = build(:user, email: "sample_1@example.com")
