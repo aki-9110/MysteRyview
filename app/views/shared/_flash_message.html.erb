@@ -1,0 +1,7 @@
+<% if flash.any? %>
+  <% flash.each do |type, message| %>
+    <div class="<%= flash_background_color(type) %> px-4 py-2 rounded-md mb-4">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
