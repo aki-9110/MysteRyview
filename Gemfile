@@ -45,8 +45,8 @@ gem "devise-i18n-views"
 gem "rails-i18n", "> 7.0.0"
 
 group :test do
-  gem 'capybara'
-  gem 'selenium-webdriver'
+  gem "capybara"
+  gem "selenium-webdriver"
   gem "webdrivers"
 end
 
