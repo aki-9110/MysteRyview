@@ -6,7 +6,7 @@ ja:
         current_password: "現在のパスワード"
         email: "メールアドレス"
         password: "パスワード"
-        password_confirmation: "確認用パスワード"
+        password_confirmation: "パスワード（確認用）"
         remember_me: "ログインを記憶"
     models:
       user: "ユーザ"
