@@ -16,3 +16,11 @@ ja:
       inquiry: '問い合わせ'
       privacy: プライバシーポリシー
       terms: 利用規約
+  reviews:
+    index:
+      review_index: "投稿一覧"
+      nothing: "投稿がありません"
+    review:
+      book_title: "書籍: "
+      author: "著者: "
+      show_review: "レビューを見る"

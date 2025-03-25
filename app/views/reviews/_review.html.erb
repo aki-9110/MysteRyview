@@ -1,0 +1,19 @@
+<div class="bg-grayBlue rounded-lg p-4 flex">
+  <!-- カードの左側 -->
+  <div class="mr-7 flex-shrink-0">
+    <div class="w-[108px] h-[150px] bg-lightGray mb-7">
+      本の画像
+    </div>
+    <div class="text-lightGray text-center">
+      <%= review.user.name %>
+    </div>
+  </div>
+  <!-- カードの右側 -->
+  <div class="flex flex-col flex-grow">
+    <div class="text-lightGray text-xl mb-4"><%= t(".book_title") %><%= link_to review.book.title, "#", class: "hover:opacity-70" %></div>
+    <div class="text-lightGray text-xl mb-4"><%= t(".author") %><%= link_to review.book.author, "#", class: "hover:opacity-70" %></div>
+    <div class="text-lightGray text-xl mb-4">星5評価: <%= review.rating %></div>
+    <div class="text-lightGray mb-7">いいね機能</div>
+    <div class="text-dullGold underline underline-offset-dullGold text-right"><%= link_to t(".show_review"), "#", class: "hover:opacity-70" %></div>
+  </div>
+</div>
