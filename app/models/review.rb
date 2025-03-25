@@ -3,4 +3,7 @@ class Review < ApplicationRecord
   validates :spoiler_text, length: { maximum: 1000 }
   validates :foreshadowing, length: { maximum: 500 }
   validates :rating, presence: true
+
+  belongs_to :user
+  belongs_to :book
 end
