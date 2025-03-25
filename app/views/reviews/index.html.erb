@@ -1,0 +1,23 @@
+<div>
+  <div class="mt-[80px] text-center">
+    <label class="input bg-lightGray">
+      <input type="search" required placeholder="Search"/>
+    </label>
+  </div>
+
+  <h1 class="text-dullGold mt-[80px] text-center text-4xl font-header"><%= t(".review_index") %></h1>
+
+  <h2 class="text-dullGold mt-7 text-center"><%= @reviews.count %>件</h2>
+
+  <div class="mt-[80px] max-w-5xl mx-auto">
+    <% if @reviews.present? %>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <% @reviews.each do |review| %>
+          <%= render "review", review: review %>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="text-dullGold text-center"><%= t(".nothing") %></div>
+    <% end %>
+  </div>
+</div>
