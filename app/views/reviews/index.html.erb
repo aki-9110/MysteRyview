@@ -1,3 +1,4 @@
+<% content_for(:title, t('.title')) %>
 <div>
   <div class="mt-[80px] text-center">
     <label class="input bg-lightGray">
@@ -5,7 +6,7 @@
     </label>
   </div>
 
-  <h1 class="text-dullGold mt-[80px] text-center text-4xl font-header"><%= t(".review_index") %></h1>
+  <h1 class="text-dullGold mt-[80px] text-center text-4xl font-header"><%= t(".title") %></h1>
 
   <h2 class="text-dullGold mt-7 text-center"><%= @reviews.count %>件</h2>
 

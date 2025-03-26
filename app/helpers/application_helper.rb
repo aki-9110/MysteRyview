@@ -7,4 +7,9 @@ module ApplicationHelper
     else "bg-gray-500"
     end
   end
+
+  def page_title(title = "")
+    base_title = "MysteRyview"
+    title.present? ? "#{title} | #{base_title}" : base_title
+  end
 end
