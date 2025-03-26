@@ -14,6 +14,7 @@
   --color-grayBlue: #3A4155; /*カード背景(グレーブルー)*/
   --color-darkSlateBlue: #1E2A38; /*ヘッダー(ダークスレートブルー)*/
   --color-darkBlue: #252A3A; /*本詳細のカード背景(ダークブルー)*/
+  --color-dustyRose : #CFA7A7; /*ネタバレ関係(ダスティローズ)*/
   --font-header: "Yu Mincho", "sans-serif";
   --font-text: "Noto Sans", "sans-serif";
 }
