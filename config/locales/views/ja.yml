@@ -1,4 +1,8 @@
 ja:
+  defaults:
+    flash_message:
+      created: "%{item}を投稿しました"
+      input_error: "入力に誤りがあります"
   shared:
     before_signin_header:
       sign_in: 'ログイン'
@@ -20,6 +24,9 @@ ja:
     index:
       title: "投稿一覧"
       nothing: "投稿がありません"
+    new:
+      title: "レビューを書く"
+      create: "投稿する"
     review:
       book_title: "書籍: "
       author: "著者: "

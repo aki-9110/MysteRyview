@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
+
   def index
     @reviews = Review.includes(:user, :book).order(created_at: :desc)
   end
@@ -8,7 +10,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    book = Book.find_or_create_by(title: review_params[:title], author: review_params[:author])
+    book = Book.find_or_create_by(title: review_params[:book_title], author: review_params[:book_author])
     @review = current_user.reviews.build(
       book_id: book.id,
       non_spoiler_text: review_params[:non_spoiler_text],
@@ -17,10 +19,9 @@ class ReviewsController < ApplicationController
       rating: review_params[:rating]
     )
     if @review.save
-      flash[:notice] = "レビューを投稿しました"
-      redirect_to reviews_path
+      redirect_to reviews_path, success: t("defaults.flash_message.created", item: Review.model_name.human)
     else
-      flash[:alert] = "入力に誤りがあります"
+      flash[:alert] = t("defaults.flash_message.input_error")
       render :new, status: :unprocessable_entity
     end
   end
@@ -28,6 +29,6 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:title, :author, :non_spoiler_text, :spoiler_text, :foreshadowing, :rating)
+    params.require(:review).permit(:book_title, :book_author, :non_spoiler_text, :spoiler_text, :foreshadowing, :rating)
   end
 end
