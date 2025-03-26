@@ -1,5 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Review, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:user) { build(:user) }
+  let(:book) { build(:book) }
+  let(:review) { build(:review, user: user, book: book) }
+
+  
 end
