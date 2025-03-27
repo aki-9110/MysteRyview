@@ -1,33 +1,35 @@
 <% content_for(:title, t(".title")) %>
-<div>
-  <h1 class="text-dullGold text-center text-5xl font-header"><%= t(".title") %></h1>
-  <%= form_with model: @review, local: true do |f| %>
-    <div class="mb-7">
-      <%= f.label :book_title, class: "text-dullGold font-header" %>
-      <%= f.text_field :book_title, class: "form-control bg-lightGray", placeholder: "本のタイトルを入力してください" %>
-    </div>
-    <div class="mb-7">
-      <%= f.label :book_author, class: "text-dullGold font-header" %>
-      <%= f.text_field :book_author, class: "form-control bg-lightGray", placeholder: "著者を入力してください" %>
-    </div>
-    <div class="mb-7">
-      <%= f.label :non_spoiler_text, class: "text-dullGold font-header" %>
-      <%= f.text_area :non_spoiler_text, class: "form-control bg-lightGray", placeholder: "感想・レビューを入力してください\n※ネタバレは含まないでください" %>
-    </div>
-    <div class="mb-7">
-      <%= f.label :spoiler_text, class: "text-dullGold font-header" %>
-      <%= f.text_area :spoiler_text, class: "form-control bg-dustyRose", placeholder: "思いっきりネタバレを含みましょう！\n「○○のトリックがすごかった！」など" %>
-    </div>
-    <div class="mb-7">
-      <%= f.label :foreshadowing, class: "text-dullGold font-header" %>
-      <%= f.text_area :foreshadowing, class: "form-control bg-dustyRose", placeholder: "自分で気づいた伏線はありますか？\n・ページ数\n・何行目" %>
-    </div>
-    <div class="mb-7">
-      <%= f.label :rating, class: "text-dullGold font-header" %>
-      <%= f.number_field :rating, min: 1, max: 5, class: "bg-lightGray", required: true %>
-    </div>
-    <div class="actions">
-      <%= f.submit t(".create"), class: "btn btn-primary" %>
-    </div>
-  <% end %>
+<div class="flex-1">
+  <h1 class="text-dullGold text-center text-5xl font-header mt-20"><%= t(".title") %></h1>
+  <div class="container mx-auto mt-40 mb-20 px-6 md:px-32 py-6">
+    <%= form_with model: @review, local: true do |f| %>
+      <div class="field mb-20">
+        <%= f.label :book_title, class: "text-dullGold font-header block mb-2" %>
+        <%= f.text_field :book_title, class: "form-control bg-lightGray border border-gray-200 rounded-lg w-full px-3 py-2", placeholder: "本のタイトルを入力してください" %>
+      </div>
+      <div class="field mb-20">
+        <%= f.label :book_author, class: "text-dullGold font-header block mb-2" %>
+        <%= f.text_field :book_author, class: "form-control bg-lightGray border border-gray-200 rounded-lg w-full px-3 py-2", placeholder: "著者を入力してください" %>
+      </div>
+      <div class="field mb-20">
+        <%= f.label :non_spoiler_text, class: "text-dullGold font-header block mb-2" %>
+        <%= f.text_area :non_spoiler_text, class: "form-control bg-lightGray border border-gray-200 rounded-lg w-full px-3 py-2 textarea h-60", placeholder: "感想・レビューを入力してください\n※ネタバレは含まないでください" %>
+      </div>
+      <div class="field mb-20">
+        <%= f.label :spoiler_text, class: "text-dullGold font-header block mb-2" %>
+        <%= f.text_area :spoiler_text, class: "form-control bg-dustyRose border border-gray-200 rounded-lg w-full px-3 py-2 textarea h-60", placeholder: "思いっきりネタバレを含みましょう！\n「○○のトリックがすごかった！」など" %>
+      </div>
+      <div class="field mb-20">
+        <%= f.label :foreshadowing, class: "text-dullGold font-header block mb-2" %>
+        <%= f.text_area :foreshadowing, class: "form-control bg-dustyRose border border-gray-200 rounded-lg w-full px-3 py-2 textarea", placeholder: "自分で気づいた伏線はありますか？\n・ページ数\n・何行目" %>
+      </div>
+      <div class="mb-20">
+        <%= f.label :rating, class: "text-dullGold font-header block mb-2" %>
+        <%= f.number_field :rating, min: 1, max: 5, class: "bg-lightGray", required: true, value: 1 %>
+      </div>
+      <div class="actions">
+        <%= f.submit t(".create"), class: "btn btn-primary" %>
+      </div>
+      <% end %>
+  </div>
 </div>
