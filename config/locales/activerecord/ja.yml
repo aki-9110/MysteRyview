@@ -10,3 +10,6 @@ ja:
         spoiler_text: 感想・レビュー★ネタバレあり
         foreshadowing: 気づいた伏線（未入力でも可）
         rating: 評価 (1〜5)
+      book:
+        title: 本のタイトル
+        author: 著者

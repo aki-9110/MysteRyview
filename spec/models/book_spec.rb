@@ -14,13 +14,13 @@ RSpec.describe Book, type: :model do
       it "titleが未入力の場合登録できない" do
         book.title = ""
         expect(book).to be_invalid
-        expect(book.errors.full_messages).to include("Titleを入力してください")
+        expect(book.errors.full_messages).to include("本のタイトルを入力してください")
       end
 
       it "authorが未入力の場合登録できない" do
         book.author = ""
         expect(book).to be_invalid
-        expect(book.errors.full_messages).to include("Authorを入力してください")
+        expect(book.errors.full_messages).to include("著者を入力してください")
       end
     end
 
@@ -29,14 +29,14 @@ RSpec.describe Book, type: :model do
         create(:book, title: "sample1_title")
         book2 = build(:book, title: "sample1_title")
         expect(book2).to be_invalid
-        expect(book2.errors.full_messages).to include("Titleはすでに存在します")
+        expect(book2.errors.full_messages).to include("本のタイトルはすでに存在します")
       end
 
       it "authorは重複して登録できない" do
         create(:book, author: "sample1_title")
         book2 = build(:book, author: "sample1_title")
         expect(book2).to be_invalid
-        expect(book2.errors.full_messages).to include("Authorはすでに存在します")
+        expect(book2.errors.full_messages).to include("著者はすでに存在します")
       end
     end
 
@@ -44,13 +44,13 @@ RSpec.describe Book, type: :model do
       it "titleが長すぎる場合" do
         book.title = "a" * 256
         expect(book).to be_invalid
-        expect(book.errors.full_messages).to include("Titleは255文字以内で入力してください")
+        expect(book.errors.full_messages).to include("本のタイトルは255文字以内で入力してください")
       end
 
       it "Authorが長すぎる場合" do
         book.author = "a" * 256
         expect(book).to be_invalid
-        expect(book.errors.full_messages).to include("Authorは255文字以内で入力してください")
+        expect(book.errors.full_messages).to include("著者は255文字以内で入力してください")
       end
     end
   end
