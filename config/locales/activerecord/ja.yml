@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    models:
+      review: レビュー
+    attributes:
+      review:
+        book_title: 本のタイトル
+        book_author: 著者
+        non_spoiler_text: 感想・レビュー（ネタバレなし）
+        spoiler_text: 感想・レビュー★ネタバレあり
+        foreshadowing: 気づいた伏線（未入力でも可）
+        rating: 評価 (1〜5)
+      book:
+        title: 本のタイトル
+        author: 著者
