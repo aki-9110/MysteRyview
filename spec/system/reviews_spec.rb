@@ -31,19 +31,17 @@ RSpec.describe "Reviews", type: :system do
   end
 
   describe "ログイン後" do
+    before { login(user) }
+
     context "レビューを作成する" do
-      before { login(user) }
-      
       it "レビュー作成画面へ遷移する" do
-        login(user)
-        visit new_review_path
-        expect(page).to have_content "レビューを書く"
+        click_link "レビューを書く"
+        expect(page).to have_content "本のタイトル"
         expect(current_path).to eq new_review_path
       end
 
       it "項目を入力するとレビューが作成される" do
-        login(user)
-        visit new_review_path
+        click_link "レビューを書く"
         fill_in "review[book_title]", with: "そして誰もいなくなった"
         fill_in "review[book_author]", with: "アガサクリスティー"
         fill_in "review[non_spoiler_text]", with: "すごかった！"
@@ -55,6 +53,21 @@ RSpec.describe "Reviews", type: :system do
         expect(current_path).to eq reviews_path
         expect(page).to have_content "書籍: そして誰もいなくなった"
         expect(page).to have_content "著者: アガサクリスティー"
+      end
+    end
+
+    context "未入力の項目がある" do
+      it "投稿に失敗する" do
+        click_link "レビューを書く"
+        fill_in "review[book_title]", with: ""
+        fill_in "review[book_author]", with: ""
+        fill_in "review[non_spoiler_text]", with: ""
+        fill_in "review[spoiler_text]", with: "犯人は〇〇です"
+        fill_in "review[foreshadowing]", with: "右腕の傷"
+        fill_in "review[rating]", with: 5
+        click_button "投稿する"
+        expect(page).to have_content "入力に誤りがあります"
+        expect(current_path).to eq new_review_path
       end
     end
   end
