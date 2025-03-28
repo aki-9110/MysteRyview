@@ -2,7 +2,7 @@
   <!-- カードの左側 -->
   <div class="mr-7 flex-shrink-0">
     <% if review.image.attached? %>
-      <%= image_tag review.image %>
+      <%= image_tag review.image, class: "w-[108px] h-[150px]" %>
     <% else %>
       <div class="w-[108px] h-[150px] bg-lightGray mb-7">
         本の画像

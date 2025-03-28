@@ -44,6 +44,8 @@ gem "devise-i18n-views"
 
 gem "rails-i18n", "> 7.0.0"
 
+gem "aws-sdk-s3", require: false
+
 group :test do
   gem "capybara"
   gem "selenium-webdriver"
