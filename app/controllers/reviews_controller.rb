@@ -16,7 +16,8 @@ class ReviewsController < ApplicationController
       non_spoiler_text: review_params[:non_spoiler_text],
       spoiler_text: review_params[:spoiler_text],
       foreshadowing: review_params[:foreshadowing],
-      rating: review_params[:rating]
+      rating: review_params[:rating],
+      image: review_params[:image]
     )
     if @review.save
       redirect_to reviews_path, success: t("defaults.flash_message.created", item: Review.model_name.human)
