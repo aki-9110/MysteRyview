@@ -16,7 +16,8 @@ class ReviewsController < ApplicationController
       non_spoiler_text: review_params[:non_spoiler_text],
       spoiler_text: review_params[:spoiler_text],
       foreshadowing: review_params[:foreshadowing],
-      rating: review_params[:rating]
+      rating: review_params[:rating],
+      image: review_params[:image]
     )
     if @review.save
       redirect_to reviews_path, success: t("defaults.flash_message.created", item: Review.model_name.human)
@@ -29,6 +30,6 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:book_title, :book_author, :non_spoiler_text, :spoiler_text, :foreshadowing, :rating)
+    params.require(:review).permit(:book_title, :book_author, :non_spoiler_text, :spoiler_text, :foreshadowing, :rating, :image)
   end
 end

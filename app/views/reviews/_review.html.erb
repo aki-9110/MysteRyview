@@ -1,9 +1,13 @@
 <div class="bg-grayBlue rounded-lg p-4 flex">
   <!-- カードの左側 -->
   <div class="mr-7 flex-shrink-0">
-    <div class="w-[108px] h-[150px] bg-lightGray mb-7">
-      本の画像
-    </div>
+    <% if review.image.attached? %>
+      <%= image_tag review.image %>
+    <% else %>
+      <div class="w-[108px] h-[150px] bg-lightGray mb-7">
+        本の画像
+      </div>
+    <% end %>
     <div class="text-lightGray text-center">
       <%= review.user.name %>
     </div>
