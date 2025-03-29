@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe "Reviews", type: :system do
   let(:user) { create(:user) }
+  let(:book) { create(:book) }
+  let(:review) { create(:review, user: user, book: book) }
 
   describe "ログイン前" do
     context "投稿一覧へのアクセス" do
@@ -26,6 +28,14 @@ RSpec.describe "Reviews", type: :system do
         click_button "ログイン"
         expect(page).to have_content "ログインしました。"
         expect(current_path).to eq new_review_path
+      end
+    end
+
+    context "レビュー詳細画面へアクセス" do
+      it "レビュー詳細画面へ遷移する" do
+        visit review_path(review)
+        expect(page).to have_content review.book.title
+        expect(current_path).to eq review_path(review)
       end
     end
   end

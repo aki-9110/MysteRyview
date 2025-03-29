@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :authenticate_user!, except: [ :index ]
+  before_action :authenticate_user!, except: [ :index, :show ]
 
   def index
     @reviews = Review.includes(:user, :book).order(created_at: :desc)
