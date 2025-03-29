@@ -27,6 +27,10 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def show
+    @review = Review.includes(:user, :book).find(params[:id])
+  end
+
   private
 
   def review_params
