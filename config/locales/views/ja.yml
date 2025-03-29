@@ -31,3 +31,10 @@ ja:
       book_title: "書籍: "
       author: "著者: "
       show_review: "レビューを見る"
+    show:
+      review: "感想・レビュー"
+      annotation: "※このレビューにはネタバレが含まれていません"
+      index: "一覧へ戻る"
+      show_spoiler_review: "ネタバレ感想を見る"
+      book_title: "書籍: "
+      author: "著者: "

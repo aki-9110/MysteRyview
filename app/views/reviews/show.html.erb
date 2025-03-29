@@ -21,7 +21,7 @@
       <p class="text-lightGray"><%= t(".author") %><%= link_to @review.book.author, "#", class: "hover:opacity-70" %></p>
     </div>
 
-    <div class="flex mb-4 flex justify-center">
+    <div class="flex mb-4 justify-center">
       <div class="text-lightGray text-xl mb-4">星5評価: <%= @review.rating %></div>
     </div>
 
@@ -43,17 +43,18 @@
   </div>
 
   <div class="w-full md:w-2/3 flex flex-col">
-    <div class="mb-8 mt-10">
+    <div class="mb-5 mt-10">
       <div class="flex items-center mb-4">
         <div class="w-8 h-8 bg-[#d9d9d9] rounded-full mr-3"></div>
         <span class="text-lightGray"><%= @review.user.name %></span>
       </div>
-      <p class="text-dullGold text-sm mb-4">※このレビューにはネタバレが含まれていません</p>
     </div>
+
+    <p class="text-dullGold text-sm mb-4"><%= t(".annotation") %></p>
 
     <div class="bg-darkBlue p-6 rounded-md flex-1 flex flex-col">
       <div class="border-b border-dullGold mb-4">
-        <h2 class="text-xl mb-2 text-dullGold font-header">感想・レビュー</h2>
+        <h2 class="text-xl mb-2 text-dullGold font-header"><%= t(".review") %></h2>
       </div>
 
       <div class="flex-1">
@@ -67,6 +68,6 @@
 </div>
 
 <div class="space-x-4 flex justify-center mt-20 mb-40">
-  <button class="bg-[#eed9b6] text-[#1b1f3b] px-6 py-2 rounded hover:bg-[#d4b886]">一覧へ戻る</button>
-  <button class="bg-[#8b0000] text-white px-6 py-2 rounded hover:opacity-90">ネタバレ感想を見る</button>
+  <button class="bg-goldBeige text-[#1b1f3b] px-6 py-2 rounded hover:bg-[#d4b886]"><%= t(".index") %></button>
+  <button class="bg-[#8b0000] text-white px-6 py-2 rounded hover:opacity-60"><%= t(".show_spoiler_review") %></button>
 </div>
