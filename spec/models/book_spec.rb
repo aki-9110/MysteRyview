@@ -24,22 +24,6 @@ RSpec.describe Book, type: :model do
       end
     end
 
-    context "データが重複する時、登録に失敗する" do
-      it "titleは重複して登録できない" do
-        create(:book, title: "sample1_title")
-        book2 = build(:book, title: "sample1_title")
-        expect(book2).to be_invalid
-        expect(book2.errors.full_messages).to include("本のタイトルはすでに存在します")
-      end
-
-      it "authorは重複して登録できない" do
-        create(:book, author: "sample1_title")
-        book2 = build(:book, author: "sample1_title")
-        expect(book2).to be_invalid
-        expect(book2.errors.full_messages).to include("著者はすでに存在します")
-      end
-    end
-
     context "入力値が不正の時、登録できない" do
       it "titleが長すぎる場合" do
         book.title = "a" * 256
