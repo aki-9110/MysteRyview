@@ -18,6 +18,6 @@
     <div class="text-lightGray text-xl mb-4"><%= t(".author") %><%= link_to review.book.author, "#", class: "hover:opacity-70" %></div>
     <div class="text-lightGray text-xl mb-4">星5評価: <%= review.rating %></div>
     <div class="text-lightGray mb-7">いいね機能</div>
-    <div class="text-dullGold underline underline-offset-dullGold text-right"><%= link_to t(".show_review"), "#", class: "hover:opacity-70" %></div>
+    <div class="text-dullGold underline underline-offset-dullGold text-right"><%= link_to t(".show_review"), review_path(review), class: "hover:opacity-70" %></div>
   </div>
 </div>

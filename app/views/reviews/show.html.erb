@@ -1,0 +1,73 @@
+<% content_for(:title, @review.book.title) %>
+<div class="max-w-6xl mx-auto px-4 py-8 flex flex-col md:flex-row gap-8 mt-30">
+  <div class="w-full md:w-1/3 bg-darkBlue p-6 rounded-md">
+    <h1 class="text-dullGold text-2xl font-header mb-6 text-center"><%= @review.book.title %></h1>
+
+    <div class="mb-6 flex justify-center">
+      <% if @review.image.attached? %>
+        <%= image_tag @review.image, class: "w-[196px] h-[273px]" %>
+      <% else %>
+        <div class="w-[196px] h-[273px] bg-lightGray mb-7">
+          本の画像
+        </div>
+      <% end %>
+    </div>
+
+    <div class="mb-4">
+      <p class="text-lightGray text-center"><%= t(".book_title") %><%= link_to @review.book.title, "#", class: "hover:opacity-70" %></p>
+    </div>
+
+    <div class="mb-4 text-center">
+      <p class="text-lightGray"><%= t(".author") %><%= link_to @review.book.author, "#", class: "hover:opacity-70" %></p>
+    </div>
+
+    <div class="flex mb-4 justify-center">
+      <div class="text-lightGray text-xl mb-4">星5評価: <%= @review.rating %></div>
+    </div>
+
+    <div class="flex justify-center mb-4">
+      <div class="w-6 h-6 bg-[#d9d9d9] flex items-center justify-center rounded-sm text-xs text-[#1b1f3b]">
+        👍
+      </div>
+      <span class="ml-2 text-lightGray">24いいね</span>
+    </div>
+
+    <div class="mb-4 text-center">
+      <span class="text-[#d4b886]">#タグ, #タグ</span>
+    </div>
+
+    <div class="flex justify-center space-x-2 items-center">
+      <div class="w-8 h-8 bg-[#d9d9d9] rounded-sm"></div>
+      <div class="w-8 h-8 bg-[#d9d9d9] rounded-sm"></div>
+    </div>
+  </div>
+
+  <div class="w-full md:w-2/3 flex flex-col">
+    <div class="mb-5 mt-10">
+      <div class="flex items-center mb-4">
+        <div class="w-8 h-8 bg-[#d9d9d9] rounded-full mr-3"></div>
+        <span class="text-lightGray"><%= @review.user.name %></span>
+      </div>
+    </div>
+
+    <p class="text-dullGold text-sm mb-4"><%= t(".annotation") %></p>
+
+    <div class="bg-darkBlue p-6 rounded-md flex-1 flex flex-col">
+      <div class="border-b border-dullGold mb-4">
+        <h2 class="text-xl mb-2 text-dullGold font-header"><%= t(".review") %></h2>
+      </div>
+
+      <div class="flex-1">
+        <p class="text-lightGray text-sm leading-relaxed">
+          <%= @review.non_spoiler_text %>
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="space-x-4 flex justify-center mt-20 mb-40">
+  <button class="bg-goldBeige text-[#1b1f3b] px-6 py-2 rounded hover:bg-[#d4b886]"><%= t(".index") %></button>
+  <button class="bg-[#8b0000] text-white px-6 py-2 rounded hover:opacity-60"><%= t(".show_spoiler_review") %></button>
+</div>

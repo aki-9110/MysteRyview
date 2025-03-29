@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :authenticate_user!, except: [ :index ]
+  before_action :authenticate_user!, except: [ :index, :show ]
 
   def index
     @reviews = Review.includes(:user, :book).order(created_at: :desc)
@@ -25,6 +25,10 @@ class ReviewsController < ApplicationController
       flash[:alert] = t("defaults.flash_message.input_error")
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def show
+    @review = Review.includes(:user, :book).find(params[:id])
   end
 
   private

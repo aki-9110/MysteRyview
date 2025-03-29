@@ -4,5 +4,8 @@ FactoryBot.define do
     spoiler_text { "sample_spoiler_text" }
     foreshadowing { "sample_foreshadowing" }
     rating { 5 }
+
+    association :user
+    association :book
   end
 end
