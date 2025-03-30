@@ -8,4 +8,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :reviews
+
+  def own?(object)
+    object&.user_id == id
+  end
 end
