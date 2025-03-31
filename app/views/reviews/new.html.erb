@@ -6,11 +6,11 @@
       <%= render "shared/error_messages", object: f.object, class: "mb-20" %>
       <div class="field mb-20">
         <%= f.label :book_title, class: "text-dullGold font-header block mb-2" %>
-        <%= f.text_field :book_title, class: "form-control bg-lightGray border border-gray-200 rounded-lg w-full px-3 py-2", placeholder: "本のタイトルを入力してください" %>
+        <%= f.text_field :book_title, class: "form-control bg-lightGray border border-gray-200 rounded-lg w-full px-3 py-2", placeholder: "本のタイトルを入力してください", value: @review.book&.title.to_s %>
       </div>
       <div class="field mb-20">
         <%= f.label :book_author, class: "text-dullGold font-header block mb-2" %>
-        <%= f.text_field :book_author, class: "form-control bg-lightGray border border-gray-200 rounded-lg w-full px-3 py-2", placeholder: "著者を入力してください" %>
+        <%= f.text_field :book_author, class: "form-control bg-lightGray border border-gray-200 rounded-lg w-full px-3 py-2", placeholder: "著者を入力してください", value: @review.book&.author.to_s %>
       </div>
       <div class="field mb-20">
         <%= f.label :non_spoiler_text, class: "text-dullGold font-header block mb-2" %>
@@ -33,7 +33,7 @@
         <%= f.file_field :image, class: "bg-lightGray file-input" %>
       </div>
       <div class="actions">
-        <%= f.submit t(".create"), class: "btn btn-primary" %>
+        <%= f.submit t(".action"), class: "btn btn-primary" %>
       </div>
       <% end %>
   </div>
