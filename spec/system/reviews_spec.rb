@@ -136,5 +136,17 @@ RSpec.describe "Reviews", type: :system do
         expect(current_path).to eq edit_review_path(review)
       end
     end
+
+    context "レビューを削除する" do
+      it "レビューを削除できる" do
+        click_link "投稿一覧"
+        accept_confirm I18n.t('defaults.delete_confirm') do
+          find("a[href='#{review_path(review)}'] i.fa-trash-can").click
+        end
+        expect(page).to have_content "レビューを削除しました"
+        expect(current_path).to eq reviews_path
+        expect(page).not_to have_content review.book.title
+      end
+    end
   end
 end

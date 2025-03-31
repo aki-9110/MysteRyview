@@ -11,11 +11,16 @@
     <div class="text-lightGray text-center">
       <%= review.user.name %>
     </div>
-    <% if current_user && current_user.own?(review) %>
-      <%= link_to edit_review_path(review) do %>
-        <i class="fa-solid fa-pen-to-square text-dullGold"></i>
+    <div class="flex justify-center mt-2">
+      <% if current_user && current_user.own?(review) %>
+        <%= link_to edit_review_path(review) do %>
+          <i class="fa-solid fa-pen-to-square text-dullGold mr-2 fa-lg"></i>
+        <% end %>
+        <%= link_to review_path(review), data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') } do %>
+          <i class="fa-solid fa-trash-can text-dullGold fa-lg"></i>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
 </svg>
   </div>
   <!-- カードの右側 -->

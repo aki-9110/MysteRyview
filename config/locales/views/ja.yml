@@ -1,10 +1,12 @@
 ja:
   defaults:
+    delete_confirm: 削除しますか？
     flash_message:
       created: "%{item}を投稿しました"
       input_error: "入力に誤りがあります"
       updated: "%{item}を更新しました"
       not_updated: "%{item}の更新に失敗しました"
+      deleted: "%{item}を削除しました"
   shared:
     before_signin_header:
       sign_in: 'ログイン'
