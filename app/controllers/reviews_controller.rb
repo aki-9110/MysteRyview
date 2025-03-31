@@ -58,7 +58,7 @@ class ReviewsController < ApplicationController
   def destroy
     review = current_user.reviews.find(params[:id])
     review.destroy!
-    redirect_to reviews_path, success: t('defaults.flash_message.deleted', item: Review.model_name.human), status: :see_other
+    redirect_to reviews_path, success: t("defaults.flash_message.deleted", item: Review.model_name.human), status: :see_other
   end
 
   private
