@@ -61,9 +61,8 @@
       </div>
 
       <div class="flex-1">
-        <p class="text-lightGray text-sm leading-relaxed">
-          <%= @review.non_spoiler_text %>
-        </p>
+        <!-- simple_formatで改行を反映させる -->
+        <%= simple_format @review.non_spoiler_text, class: "text-lightGray text-sm leading-relaxed" %>
       </div>
     </div>
 
