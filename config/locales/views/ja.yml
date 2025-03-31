@@ -28,7 +28,6 @@ ja:
       nothing: "投稿がありません"
     new:
       title: "レビューを書く"
-      action: "投稿する"
     review:
       book_title: "書籍: "
       author: "著者: "
@@ -42,4 +41,5 @@ ja:
       author: "著者: "
     edit:
       title: "レビュー編集"
-      action: "更新する"
+    form:
+      create: "投稿する"
