@@ -69,4 +69,14 @@ RSpec.describe Review, type: :model do
       end
      end
   end
+
+  describe "関連付けのテスト" do
+    it "User に属していること" do
+      expect(review.user).to eq(user)
+    end
+
+    it "Book に属していること" do
+      expect(review.book).to eq(book)
+    end
+  end
 end

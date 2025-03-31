@@ -36,9 +36,12 @@
       <span class="text-[#d4b886]">#タグ, #タグ</span>
     </div>
 
-    <div class="flex justify-center space-x-2 items-center">
-      <div class="w-8 h-8 bg-[#d9d9d9] rounded-sm"></div>
-      <div class="w-8 h-8 bg-[#d9d9d9] rounded-sm"></div>
+    <div class="flex justify-center mb-4">
+      <% if current_user && current_user.own?(@review) %>
+        <%= link_to edit_review_path(@review) do %>
+          <i class="fa-solid fa-pen-to-square text-dullGold fa-xl"></i>
+        <% end %>
+      <% end %>
     </div>
   </div>
 
@@ -58,9 +61,8 @@
       </div>
 
       <div class="flex-1">
-        <p class="text-lightGray text-sm leading-relaxed">
-          <%= @review.non_spoiler_text %>
-        </p>
+        <!-- simple_formatで改行を反映させる -->
+        <%= simple_format @review.non_spoiler_text, class: "text-lightGray text-sm leading-relaxed" %>
       </div>
     </div>
 
@@ -68,6 +70,6 @@
 </div>
 
 <div class="space-x-4 flex justify-center mt-20 mb-40">
-  <button class="bg-goldBeige text-[#1b1f3b] px-6 py-2 rounded hover:bg-[#d4b886]"><%= t(".index") %></button>
+  <%= link_to t(".index"), reviews_path, class: "btn bg-goldBeige text-[#1b1f3b] px-6 py-2 rounded hover:bg-[#d4b886]" %>
   <button class="bg-[#8b0000] text-white px-6 py-2 rounded hover:opacity-60"><%= t(".show_spoiler_review") %></button>
 </div>

@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user) { build(:user) }
+  let(:user) { create(:user) }
+  let(:review) { create(:review, user: user) }
 
   describe "ユーザー新規登録" do
     context "新規登録できる時" do
@@ -57,6 +58,12 @@ RSpec.describe User, type: :model do
         expect(user).to be_invalid
         expect(user.errors.full_messages).to include("パスワード（確認用）とパスワードの入力が一致しません")
       end
+    end
+  end
+
+  describe "関連付けのテスト" do
+    it "ReviewがUserに属していること" do
+      expect(review.user).to eq(user)
     end
   end
 end
