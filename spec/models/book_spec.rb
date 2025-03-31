@@ -1,9 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Book, type: :model do
-  let(:book) { build(:book) }
+  let(:book) { create(:book) }
+  let(:review) { create(:review, book: book) }
 
-  describe "本の登録" do
+  describe "bookの登録" do
     context "登録に成功する" do
       it "全ての項目が入力されていれば登録できる" do
         expect(book).to be_valid
@@ -36,6 +37,12 @@ RSpec.describe Book, type: :model do
         expect(book).to be_invalid
         expect(book.errors.full_messages).to include("著者は255文字以内で入力してください")
       end
+    end
+  end
+
+  describe "関連付けのテスト" do
+    it "ReviewがBookに属していること" do
+      expect(review.book).to eq(book)
     end
   end
 end
