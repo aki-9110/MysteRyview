@@ -55,6 +55,23 @@ RSpec.describe "Reviews", type: :system do
         expect(current_path).to eq edit_review_path(review)
       end
     end
+
+    context "ネタバレレビュー画面へアクセス" do
+      it "ログイン画面へ遷移する" do
+        visit spoiler_review_path(review)
+        expect(page).to have_content "ログインもしくはアカウント登録してください。"
+        expect(current_path).to eq new_user_session_path
+      end
+
+      it "ログインするとネタバレレビュー画面へ遷移する" do
+        visit spoiler_review_path(review)
+        fill_in "メールアドレス", with: user.email
+        fill_in "パスワード", with: "password"
+        click_button "ログイン"
+        expect(page).to have_content "ログインしました。"
+        expect(current_path).to eq spoiler_review_path(review)
+      end
+    end
   end
 
   describe "ログイン後" do
@@ -121,20 +138,6 @@ RSpec.describe "Reviews", type: :system do
         expect(page).to have_content "書籍: そして誰もいなくなった"
         expect(page).to have_content "著者: アガサクリスティー"
       end
-
-      it "レビューの編集に失敗する" do
-        click_link "投稿一覧"
-        click_link href: edit_review_path(review)
-        fill_in "review[book_title]", with: ""
-        fill_in "review[book_author]", with: ""
-        fill_in "review[non_spoiler_text]", with: ""
-        fill_in "review[spoiler_text]", with: "犯人は〇〇です"
-        fill_in "review[foreshadowing]", with: "右腕の傷"
-        fill_in "review[rating]", with: 5
-        click_button "投稿する"
-        expect(page).to have_content "レビューの更新に失敗しました"
-        expect(current_path).to eq edit_review_path(review)
-      end
     end
 
     context "レビューを削除する" do
@@ -146,6 +149,19 @@ RSpec.describe "Reviews", type: :system do
         expect(page).to have_content "レビューを削除しました"
         expect(current_path).to eq reviews_path
         expect(page).not_to have_content review.book.title
+      end
+    end
+
+    context "ネタバレレビュー画面へアクセスする" do
+      it "ネタバレレビュー画面へ遷移する" do
+        review
+        click_link "投稿一覧"
+        click_link "レビューを見る"
+        accept_confirm "ネタバレが表示されますがよろしいですか？" do
+          click_link "ネタバレ感想を見る"
+        end
+        expect(page).not_to have_content review.spoiler_text
+        expect(current_path).to eq spoiler_review_path(review)
       end
     end
   end

@@ -1,6 +1,7 @@
 ja:
   defaults:
     delete_confirm: 削除しますか？
+    spoiler_confirm: ネタバレが表示されますがよろしいですか？
     flash_message:
       created: "%{item}を投稿しました"
       input_error: "入力に誤りがあります"
@@ -34,13 +35,18 @@ ja:
       book_title: "書籍: "
       author: "著者: "
       show_review: "レビューを見る"
-    show:
+    non_spoiler:
       review: "感想・レビュー"
       annotation: "※このレビューにはネタバレが含まれていません"
-      index: "一覧へ戻る"
-      show_spoiler_review: "ネタバレ感想を見る"
       book_title: "書籍: "
       author: "著者: "
+    spoiler:
+      spoiler_review: "感想・レビュー★ネタバレあり"
+      foreshadowing: "気づいた伏線"
+      index: "一覧へ戻る"
+    show:
+      index: "一覧へ戻る"
+      show_spoiler_review: "ネタバレ感想を見る"
     edit:
       title: "レビュー編集"
     form:

@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!, except: [ :index, :show ]
+  before_action :set_review, only: [ :edit, :update ]
 
   def index
     @reviews = Review.includes(:user, :book).order(created_at: :desc)
@@ -32,12 +33,9 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    @review = current_user.reviews.includes(:user, :book).find(params[:id])
   end
 
   def update
-    @review = current_user.reviews.includes(:user, :book).find(params[:id])
-
     book = Book.find_or_create_by(title: review_params[:book_title], author: review_params[:book_author])
 
     if @review.update(
@@ -61,7 +59,15 @@ class ReviewsController < ApplicationController
     redirect_to reviews_path, success: t("defaults.flash_message.deleted", item: Review.model_name.human), status: :see_other
   end
 
+  def spoiler
+    @review = Review.includes(:user, :book).find(params[:id])
+  end
+
   private
+
+  def set_review
+    @review = current_user.reviews.includes(:user, :book).find(params[:id])
+  end
 
   def review_params
     params.require(:review).permit(:book_title, :book_author, :non_spoiler_text, :spoiler_text, :foreshadowing, :rating, :image)
