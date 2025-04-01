@@ -40,6 +40,10 @@ ja:
       annotation: "※このレビューにはネタバレが含まれていません"
       book_title: "書籍: "
       author: "著者: "
+    spoiler:
+      spoiler_review: "感想・レビュー★ネタバレあり"
+      foreshadowing: "気づいた伏線"
+      index: "一覧へ戻る"
     show:
       index: "一覧へ戻る"
       show_spoiler_review: "ネタバレ感想を見る"
