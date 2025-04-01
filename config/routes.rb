@@ -3,7 +3,13 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: "users/registrations"
   }
-  resources :reviews
+
+  resources :reviews do
+    member do
+      get :spoiler
+    end
+  end
+
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Render dynamic PWA files from app/views/pwa/*
