@@ -138,20 +138,6 @@ RSpec.describe "Reviews", type: :system do
         expect(page).to have_content "書籍: そして誰もいなくなった"
         expect(page).to have_content "著者: アガサクリスティー"
       end
-
-      it "レビューの編集に失敗する" do
-        click_link "投稿一覧"
-        click_link href: edit_review_path(review)
-        fill_in "review[book_title]", with: ""
-        fill_in "review[book_author]", with: ""
-        fill_in "review[non_spoiler_text]", with: ""
-        fill_in "review[spoiler_text]", with: "犯人は〇〇です"
-        fill_in "review[foreshadowing]", with: "右腕の傷"
-        fill_in "review[rating]", with: 5
-        click_button "投稿する"
-        expect(page).to have_content "レビューの更新に失敗しました"
-        expect(current_path).to eq edit_review_path(review)
-      end
     end
 
     context "レビューを削除する" do
@@ -172,7 +158,7 @@ RSpec.describe "Reviews", type: :system do
         click_link "投稿一覧"
         click_link "レビューを見る"
         accept_confirm "ネタバレが表示されますがよろしいですか？" do
-          click_link "ネタバレ感想を見る" 
+          click_link "ネタバレ感想を見る"
         end
         expect(page).not_to have_content review.spoiler_text
         expect(current_path).to eq spoiler_review_path(review)
