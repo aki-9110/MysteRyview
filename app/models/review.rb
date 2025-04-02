@@ -12,10 +12,10 @@ class Review < ApplicationRecord
   has_one_attached :image
 
   def self.ransackable_associations(auth_object = nil)
-    ["book"]
+    [ "book" ]
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    ["created_at", "id", "updated_at"]
+    [ "created_at", "id", "updated_at" ]
   end
 end
