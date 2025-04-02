@@ -1,0 +1,12 @@
+<div class="flex justify-center mt-16">
+  <div class="relative w-full max-w-2xl">
+    <div class="mx-auto">
+      <%= search_form_for q, url: url, class: "w-full" do |f| %>
+        <div class="flex w-full"> 
+          <%= f.search_field :book_title_or_book_author_cont, class: "bg-lightGray flex-grow py-3 px-4 rounded-l-md placeholder-gray-500 focus:outline-none w-full", placeholder: t('defaults.search_word') %>
+          <%= f.submit class: 'px-6 py-3 rounded-r-md bg-[#eed9b6] hover:bg-[#d4b886] text-[#000000] font-medium transition-colors' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

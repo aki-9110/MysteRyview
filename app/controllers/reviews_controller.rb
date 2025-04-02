@@ -3,7 +3,8 @@ class ReviewsController < ApplicationController
   before_action :set_review, only: [ :edit, :update ]
 
   def index
-    @reviews = Review.includes(:user, :book).order(created_at: :desc)
+    @q = Review.ransack(params[:q])
+    @reviews = @q.result(distinct: true).includes(:user, :book).order(created_at: :desc)
   end
 
   def new

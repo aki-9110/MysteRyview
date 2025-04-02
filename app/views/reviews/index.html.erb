@@ -1,10 +1,6 @@
 <% content_for(:title, t('.title')) %>
 <div>
-  <div class="mt-[80px] text-center">
-    <label class="input bg-lightGray">
-      <input type="search" required placeholder="Search"/>
-    </label>
-  </div>
+  <%= render "shared/search_form", q: @q, url: reviews_path %>
 
   <h1 class="text-dullGold mt-[80px] text-center text-4xl font-header"><%= t(".title") %></h1>
 

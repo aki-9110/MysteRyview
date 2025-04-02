@@ -13,11 +13,11 @@
     </div>
 
     <div class="mb-4">
-      <p class="text-lightGray text-center"><%= t(".book_title") %><%= link_to review.book.title, "#", class: "hover:opacity-70" %></p>
+      <p class="text-lightGray text-center"><%= t(".book_title") %><%= link_to review.book.title, reviews_path(q: { book_title_cont: review.book.title }), class: "hover:opacity-70" %></p>
     </div>
 
     <div class="mb-4 text-center">
-      <p class="text-lightGray"><%= t(".author") %><%= link_to review.book.author, "#", class: "hover:opacity-70" %></p>
+      <p class="text-lightGray"><%= t(".author") %><%= link_to review.book.author, reviews_path(q: { book_author_cont: review.book.author }), class: "hover:opacity-70" %></p>
     </div>
 
     <div class="flex mb-4 justify-center">
