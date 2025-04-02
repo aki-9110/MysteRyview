@@ -2,6 +2,7 @@ ja:
   defaults:
     delete_confirm: 削除しますか？
     spoiler_confirm: ネタバレが表示されますがよろしいですか？
+    search_word: 本のタイトル・著者を入力してください
     flash_message:
       created: "%{item}を投稿しました"
       input_error: "入力に誤りがあります"
