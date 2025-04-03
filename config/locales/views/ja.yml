@@ -9,6 +9,10 @@ ja:
       updated: "%{item}を更新しました"
       not_updated: "%{item}の更新に失敗しました"
       deleted: "%{item}を削除しました"
+  pagination:
+    previous: "前へ"
+    next: "次へ"
+    truncate: "..."
   shared:
     before_signin_header:
       sign_in: 'ログイン'

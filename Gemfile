@@ -48,6 +48,8 @@ gem "ransack"
 
 gem "aws-sdk-s3", require: false
 
+gem "kaminari"
+
 group :test do
   gem "capybara"
   gem "selenium-webdriver"

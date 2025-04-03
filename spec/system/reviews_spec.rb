@@ -14,6 +14,22 @@ RSpec.describe "Reviews", type: :system do
       end
     end
 
+    context '投稿が6件以下の場合' do
+      let!(:reviews) { create_list(:review, 6) }
+      it 'ページネーションが表示されない' do
+        visit reviews_path
+        expect(page).not_to have_selector('.pagination')
+      end
+    end
+
+    context '投稿が7件以上ある場合' do
+      let!(:reviews) { create_list(:review, 7) }
+      it 'ページネーションが表示される' do
+        visit reviews_path
+        expect(page).to have_selector('.pagination')
+      end
+    end
+
     context "レビュー作成画面へアクセス" do
       it "ログイン画面へ遷移する" do
         visit new_review_path
