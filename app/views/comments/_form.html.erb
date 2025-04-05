@@ -1,0 +1,5 @@
+<%= form_with model: comment, url: review_comments_path(review) do |f| %>
+  <%= f.label :content, class: "text-dullGold font-header block mb-2" %>
+  <%= f.text_area :content, class: "form-control bg-lightGray border border-gray-200 rounded-lg px-3 py-2", row: "4", placeholder: Comment.human_attribute_name(:content) %>
+  <%= f.submit t('defaults.post'), class: "btn btn-primary bg-goldBeige" %>
+<% end %>
