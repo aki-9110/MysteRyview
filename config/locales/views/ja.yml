@@ -6,6 +6,7 @@ ja:
     post_comment: コメントする
     flash_message:
       created: "%{item}を投稿しました"
+      not_created: "%{item}の投稿に失敗しました"
       input_error: "入力に誤りがあります"
       updated: "%{item}を更新しました"
       not_updated: "%{item}の更新に失敗しました"
