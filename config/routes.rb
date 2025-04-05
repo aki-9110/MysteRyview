@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
   root "tops#top"
+
   devise_for :users, controllers: {
     registrations: "users/registrations"
   }
 
   resources :reviews do
+    resources :comments, only: %i[create edit destroy], shallow: true
+
     member do
       get :spoiler
     end

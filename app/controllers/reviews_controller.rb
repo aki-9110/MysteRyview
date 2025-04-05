@@ -62,6 +62,8 @@ class ReviewsController < ApplicationController
 
   def spoiler
     @review = Review.includes(:user, :book).find(params[:id])
+    @comment = Comment.new
+    @comments = @review.comments.includes(:user).order(created_at: :desc)
   end
 
   private

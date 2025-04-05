@@ -1,7 +1,7 @@
 <% content_for(:title, @review.book.title) %>
 <%= render "non_spoiler", review: @review %>
 
-<!-- spoiler_text -->
+<%# spoiler_text %>
 <div class="max-w-6xl mx-auto px-4 py-8 flex flex-col md:flex-row gap-8 mt-10 justify-center">
   <div class="w-full md:w-2/3 bg-dustyRose p-6 rounded-md h-[400px]">
     <div class="rounded-md flex flex-col">
@@ -10,14 +10,14 @@
       </div>
 
       <div>
-        <!-- simple_formatで改行を反映させる -->
+        <%# simple_formatで改行を反映させる %>
         <%= simple_format @review.spoiler_text, class: "text-darkNavy text-sm leading-relaxed font-text" %>
       </div>
     </div>
   </div>
 </div>
 
-<!-- foreshadowing -->
+<%# foreshadowing %>
 <div class="max-w-6xl mx-auto px-4 py-8 flex flex-col md:flex-row gap-8 mt-10 justify-center">
   <div class="w-full md:w-2/3 bg-dustyRose p-6 rounded-md h-[250px]">
     <div class="rounded-md flex flex-col">
@@ -26,12 +26,18 @@
       </div>
 
       <div>
-        <!-- simple_formatで改行を反映させる -->
-        <%= simple_format @review.foreshadowing, class: "text-darkNavy text-sm leading-relaxed font-text" %>
+        <%# simple_formatで改行を反映させる %>
+        <%= simple_format (@review.foreshadowing.presence || "特になし"), class: "text-darkNavy text-sm leading-relaxed font-text" %>
       </div>
     </div>
   </div>
 </div>
+
+<%# コメントフォーム %>
+<%= render 'comments/form', comment: @comment, review: @review %>
+
+<%# コメント一覧 %>
+<%= render @comments %>
 
 <div class="space-x-4 flex justify-center mt-20 mb-40">
   <%= link_to t(".index"), reviews_path, class: "btn bg-goldBeige text-darkNavy px-6 py-2 rounded hover:bg-goldBeige" %>

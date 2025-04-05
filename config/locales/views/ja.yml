@@ -3,8 +3,10 @@ ja:
     delete_confirm: 削除しますか？
     spoiler_confirm: ネタバレが表示されますがよろしいですか？
     search_word: 本のタイトル・著者を入力してください
+    post_comment: コメントする
     flash_message:
       created: "%{item}を投稿しました"
+      not_created: "%{item}の投稿に失敗しました"
       input_error: "入力に誤りがあります"
       updated: "%{item}を更新しました"
       not_updated: "%{item}の更新に失敗しました"
@@ -55,4 +57,4 @@ ja:
     edit:
       title: "レビュー編集"
     form:
-      create: "投稿する"
+      post: "投稿する"

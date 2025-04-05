@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_03_27_091835) do
+ActiveRecord::Schema[7.2].define(version: 2025_04_05_061809) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,6 +50,16 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_27_091835) do
     t.index ["title"], name: "index_books_on_title"
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "review_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["review_id"], name: "index_comments_on_review_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.text "non_spoiler_text", null: false
     t.text "spoiler_text"
@@ -80,6 +90,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_27_091835) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "reviews"
+  add_foreign_key "comments", "users"
   add_foreign_key "reviews", "books"
   add_foreign_key "reviews", "users"
 end
