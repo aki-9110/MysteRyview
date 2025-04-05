@@ -55,4 +55,4 @@ ja:
     edit:
       title: "レビュー編集"
     form:
-      create: "投稿する"
+      post: "投稿する"
