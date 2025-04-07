@@ -58,3 +58,8 @@ ja:
       title: "レビュー編集"
     form:
       post: "投稿する"
+  likes:
+    create:
+      success: "いいねしました"
+    destroy:
+      success: "いいねを外しました"

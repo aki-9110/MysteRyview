@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :like_review, through: :likes, source: :review
+  has_many :like_reviews, through: :likes, source: :review
 
   def own?(object)
     object&.user_id == id
@@ -24,7 +24,7 @@ class User < ApplicationRecord
     like_reviews.destroy(review)
   end
 
-  def like?
-    like_reviews.Include?(review)
+  def like?(review)
+    like_reviews.include?(review)
   end
 end
