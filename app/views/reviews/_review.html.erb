@@ -21,14 +21,25 @@
         <% end %>
       <% end %>
     </div>
-</svg>
   </div>
+
   <!-- カードの右側 -->
   <div class="flex flex-col flex-grow">
     <div class="text-lightGray text-xl mb-4"><%= t(".book_title") %><%= link_to review.book.title, reviews_path(q: { book_title_cont: review.book.title }), class: "hover:opacity-70" %></div>
     <div class="text-lightGray text-xl mb-4"><%= t(".author") %><%= link_to review.book.author, reviews_path(q: { book_author_cont: review.book.author }), class: "hover:opacity-70" %></div>
     <div class="text-lightGray text-xl mb-4">星5評価: <%= review.rating %></div>
-    <div class="text-lightGray mb-7">いいね機能</div>
+    <div class="flex justify-end">
+      <% unless current_user && current_user.own?(review) %>
+        <%= render "likes/like_button", { review: review } %>
+      <% else %>
+        <div class='ms-auto'>
+          <i class="fa-regular fa-thumbs-up fa-xl" style="color: #eed9b6;"></i>
+        </div>
+      <% end %>
+      <div class="text-lightGray text-xl mb-4 ml-2">
+        <%= review.likes.count %>
+      </div>
+    </div>
     <div class="text-dullGold underline underline-offset-dullGold text-right"><%= link_to t(".show_review"), review_path(review), class: "hover:opacity-70" %></div>
   </div>
 </div>

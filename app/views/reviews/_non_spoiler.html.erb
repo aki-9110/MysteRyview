@@ -25,10 +25,18 @@
     </div>
 
     <div class="flex justify-center mb-4">
-      <div class="w-6 h-6 bg-[#d9d9d9] flex items-center justify-center rounded-sm text-xs text-[#1b1f3b]">
-        👍
+      <div class="flex">
+        <% unless current_user && current_user.own?(review) %>
+          <%= render "likes/like_button", { review: review } %>
+        <% else %>
+          <div>
+            <i class="fa-regular fa-thumbs-up fa-xl" style="color: #eed9b6;"></i>
+          </div>
+        <% end %>
+        <div class="text-lightGray text-xl mb-4 ml-2">
+          <%= review.likes.count %>
+        </div>
       </div>
-      <span class="ml-2 text-lightGray">24いいね</span>
     </div>
 
     <div class="mb-4 text-center">
