@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Like, type: :model do
-
   describe "いいね機能" do
     context "user_idとreview_idの組み合わせがユニークな場合" do
       it "いいねできる" do

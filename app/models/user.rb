@@ -17,7 +17,7 @@ class User < ApplicationRecord
   end
 
   def like(review)
-    like_reviews << review 
+    like_reviews << review
   end
 
   def unlike(review)
