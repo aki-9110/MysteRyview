@@ -15,4 +15,16 @@ class User < ApplicationRecord
   def own?(object)
     object&.user_id == id
   end
+
+  def like(review)
+    like_reviews << review 
+  end
+
+  def unlike(review)
+    like_reviews.destroy(review)
+  end
+
+  def like?
+    like_reviews.Include?(review)
+  end
 end
