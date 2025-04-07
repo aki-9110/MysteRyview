@@ -11,7 +11,13 @@ Rails.application.routes.draw do
     member do
       get :spoiler
     end
+
+    collection do
+      get :likes
+    end
   end
+
+  resources :likes, only: %i[create destroy]
 
   get "up" => "rails/health#show", as: :rails_health_check
 
