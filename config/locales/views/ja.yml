@@ -67,3 +67,10 @@ ja:
   profiles:
     show:
       title: "マイページ"
+      profile: "プロフィール"
+      my_posts: "自分の投稿"
+      my_likes: "いいねした投稿"
+      notifications: "通知"
+      name: "ユーザー名:"
+      email: "メールアドレス:"
+      edit: "編集する"

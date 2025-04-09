@@ -1,2 +1,44 @@
 <% content_for(:title, t('.title')) %>
-<h1 class="text-dullGold text-2xl font-header mb-8">マイページ</h1>
+<div class="flex-1 px-4 py-8 flex flex-col items-center">
+  <h1 class="text-dullGold text-5xl font-header my-20">マイページ</h1>
+
+  <%# ナビゲーションタブ %>
+  <div class="w-full md:w-2/3 max-w-3xl flex justify-between mb-6">
+    <div class="text-dullGold underline underline-offset-8 decoration-gold">
+      <%= link_to t(".profile"), profile_path %>
+    </div>
+    <div class="text-dullGold underline underline-offset-8 decoration-gold">
+      <%= link_to t(".my_posts"), "" %>
+    </div>
+    <div class="text-dullGold underline underline-offset-8 decoration-gold">
+      <%= link_to t(".my_likes"), "" %>
+    </div>
+    <div class="text-dullGold underline underline-offset-8 decoration-gold">
+      <%= link_to t(".notifications"), "" %>
+    </div>
+  </div>
+
+  <%# プロフィールカード %>
+  <div class="w-full md:w-2/3 max-w-3xl bg-darkBlue rounded-lg p-8">
+    <h2 class="text-dullGold text-2xl font-header text-center my-10"><%=t(".profile") %></h2>
+
+    <div class="flex justify-center mb-10">
+      <i class="fa-solid fa-circle-user fa-8x" style="color: #e0e0e0;"></i>
+    </div>
+
+    <div class="space-y-6 mb-10">
+      <div class="flex items-center">
+        <span class="text-dullGold w-36">ユーザー名:</span>
+        <span class="text-lightGray"><%= @user.name %></span>
+      </div>
+      <div class="flex items-center">
+        <span class="text-dullGold w-36">メールアドレス:</span>
+        <span class="text-lightGray"><%= @user.email %></span>
+      </div>
+    </div>
+
+    <div class="flex justify-center">
+      <%= link_to t(".edit"), "#", class: "btn bg-goldBeige text-darkNavy px-6 py-2 rounded hover:bg-[#d4b886]" %>
+    </div>
+  </div>
+</div>
