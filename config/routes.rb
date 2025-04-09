@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   resources :likes, only: %i[create destroy]
 
+  resource :profile, only: %i[edit show update destroy]
+
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Render dynamic PWA files from app/views/pwa/*

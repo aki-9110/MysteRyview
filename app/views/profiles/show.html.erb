@@ -1,0 +1,35 @@
+<% content_for(:title, t('.title')) %>
+<div class="flex-1 px-4 py-8 flex flex-col items-center">
+  <h1 class="text-dullGold text-5xl font-header my-20">マイページ</h1>
+
+  <%# ナビゲーションタブ %>
+  <%= render "nav_tab" %>
+
+  <%# プロフィールカード %>
+  <div class="w-full md:w-2/3 max-w-3xl bg-darkBlue rounded-lg p-8">
+    <h2 class="text-dullGold text-2xl font-header text-center my-10"><%=t(".profile") %></h2>
+
+    <div class="flex justify-center mb-10">
+      <% if @user.avatar.attached? %>
+        <%= image_tag @user.avatar, class: "w-[128px] h-[128px] border border-gray-300 rounded-full" %>
+      <% else %>
+        <i class="fa-solid fa-circle-user fa-8x" style="color: #e0e0e0;"></i>
+      <% end %>
+    </div>
+
+    <div class="space-y-6 mb-10">
+      <div class="flex items-center">
+        <span class="text-dullGold w-36">ユーザー名:</span>
+        <span class="text-lightGray"><%= @user.name %></span>
+      </div>
+      <div class="flex items-center">
+        <span class="text-dullGold w-36">メールアドレス:</span>
+        <span class="text-lightGray"><%= @user.email %></span>
+      </div>
+    </div>
+
+    <div class="flex justify-center">
+      <%= link_to t(".edit"), edit_profile_path, class: "btn bg-goldBeige text-darkNavy px-6 py-2 rounded hover:bg-[#d4b886]" %>
+    </div>
+  </div>
+</div>

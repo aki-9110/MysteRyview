@@ -1,0 +1,29 @@
+<% content_for(:title, t('.title')) %>
+<div class="flex-1 px-4 py-8 flex flex-col items-center">
+  <h1 class="text-dullGold text-5xl font-header my-20">マイページ</h1>
+
+  <%# ナビゲーションタブ %>
+  <%= render "nav_tab" %>
+
+  <%# プロフィール編集 %>
+  <div class="w-full md:w-2/3 max-w-3xl bg-darkBlue rounded-lg p-8">
+    <h2 class="text-dullGold text-2xl font-header text-center my-10"><%=t(".title") %></h2>
+
+    <%= form_with model: @user, url: profile_path, data: { turbo_method: :put }, local: true do |f| %>
+      <div class="field mt-7">
+        <%= f.label :name, class: "text-dullGold block mb-2" %>
+        <%= f.text_field :name, autocomplete: "name", class: "bg-lightGray w-md px-3 py-2 mt-1 rounded-lg" %>
+      </div>
+
+      <div class="field mx-auto mt-10">
+        <%= f.label :avatar, class: "text-dullGold font-header block mb-2" %>
+        <%= f.file_field :avatar, class: "bg-lightGray file-input w-md mt-1 rounded-lg" %>
+      </div>
+
+
+      <div class="actions text-center mt-10 mb-7 btn bg-goldBeige hover:opacity-70">
+        <%= f.submit t(".update") %>
+      </div>
+    <% end %>
+  </div>
+</div>

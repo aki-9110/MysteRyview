@@ -25,7 +25,7 @@ RSpec.describe "Users", type: :system do
         fill_in "パスワード", with: ""
         fill_in "パスワード（確認用）", with: ""
         click_button "新規登録"
-        expect(page).to have_content "3 件のエラーが発生したため ユーザ は保存されませんでした。"
+        expect(page).to have_content "3 件のエラーが発生したため ユーザー は保存されませんでした。"
         expect(page).to have_content "ユーザー名を入力してください"
         expect(page).to have_content "メールアドレスを入力してください"
         expect(page).to have_content "パスワードを入力してください"

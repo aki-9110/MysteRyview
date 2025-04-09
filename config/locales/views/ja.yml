@@ -17,17 +17,18 @@ ja:
     truncate: "..."
   shared:
     before_signin_header:
-      sign_in: 'ログイン'
-      sign_up: '新規登録'
-      inquiry: '問い合わせ'
-      review_index: '投稿一覧'
-      top: 'ホーム'
+      sign_in: "ログイン"
+      sign_up: "新規登録"
+      inquiry: "問い合わせ"
+      review_index: "投稿一覧"
+      top: "ホーム"
     header:
-      review_index: '投稿一覧'
-      post_review: 'レビューを書く'
-      ranking: 'ランキング'
-      top: 'ホーム'
-      sign_out: 'ログアウト'
+      review_index: "投稿一覧"
+      post_review: "レビューを書く"
+      ranking: "ランキング"
+      top: "ホーム"
+      sign_out: "ログアウト"
+      my_page: "マイページ"
     footer:
       inquiry: '問い合わせ'
       privacy: プライバシーポリシー
@@ -63,3 +64,18 @@ ja:
       success: "いいねしました"
     destroy:
       success: "いいねを外しました"
+  profiles:
+    show:
+      profile: "プロフィール"
+      title: "マイページ"
+      name: "ユーザー名:"
+      email: "メールアドレス:"
+      edit: "編集する"
+    edit:
+      title: "プロフィール編集"
+      update: "更新する"
+    nav_tab:
+      profile: "プロフィール"
+      my_posts: "自分の投稿"
+      my_likes: "いいねした投稿"
+      notifications: "通知"
