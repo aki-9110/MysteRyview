@@ -63,3 +63,6 @@ ja:
       success: "いいねしました"
     destroy:
       success: "いいねを外しました"
+  profiles:
+    show:
+      title: "マイページ"
