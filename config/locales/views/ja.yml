@@ -74,3 +74,6 @@ ja:
       name: "ユーザー名:"
       email: "メールアドレス:"
       edit: "編集する"
+    edit:
+      title: "プロフィール編集"
+      update: "更新する"

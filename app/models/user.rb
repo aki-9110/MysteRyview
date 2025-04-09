@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :like_reviews, through: :likes, source: :review
 
+  has_one_attached :avatar
+
   def own?(object)
     object&.user_id == id
   end

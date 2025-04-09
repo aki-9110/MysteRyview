@@ -23,7 +23,11 @@
     <h2 class="text-dullGold text-2xl font-header text-center my-10"><%=t(".profile") %></h2>
 
     <div class="flex justify-center mb-10">
-      <i class="fa-solid fa-circle-user fa-8x" style="color: #e0e0e0;"></i>
+      <% if @user.avatar.attached? %>
+        <%= image_tag @user.avatar, class: 'w-[128px] h-[128px] sm:w-16 sm:h-16 border border-gray-300 rounded-full' %>
+      <% else %>
+        <i class="fa-solid fa-circle-user fa-8x" style="color: #e0e0e0;"></i>
+      <% end %>
     </div>
 
     <div class="space-y-6 mb-10">
@@ -38,7 +42,7 @@
     </div>
 
     <div class="flex justify-center">
-      <%= link_to t(".edit"), "#", class: "btn bg-goldBeige text-darkNavy px-6 py-2 rounded hover:bg-[#d4b886]" %>
+      <%= link_to t(".edit"), edit_profile_path, class: "btn bg-goldBeige text-darkNavy px-6 py-2 rounded hover:bg-[#d4b886]" %>
     </div>
   </div>
 </div>
