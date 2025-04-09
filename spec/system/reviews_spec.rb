@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Reviews", type: :system do
   let(:user) { create(:user) }
   let(:book) { create(:book) }
-  let(:review) { create(:review, user: user, book: book) }
+  let!(:review) { create(:review, user: user, book: book) }
 
   describe "ログイン前" do
     context "投稿一覧へのアクセス" do
@@ -15,7 +15,7 @@ RSpec.describe "Reviews", type: :system do
     end
 
     context '投稿が6件以下の場合' do
-      let!(:reviews) { create_list(:review, 6) }
+      let!(:reviews) { create_list(:review, 4) }
       it 'ページネーションが表示されない' do
         visit reviews_path
         expect(page).not_to have_selector('.pagination')
@@ -159,6 +159,7 @@ RSpec.describe "Reviews", type: :system do
     context "レビューを削除する" do
       it "レビューを削除できる" do
         click_link "投稿一覧"
+        sleep 0.5
         accept_confirm I18n.t('defaults.delete_confirm') do
           find("a[href='#{review_path(review)}'] i.fa-trash-can").click
         end

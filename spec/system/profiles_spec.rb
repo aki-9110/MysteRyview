@@ -23,7 +23,7 @@ RSpec.describe "Profiles", type: :system do
       expect(page).to have_content("編集後のuser")
     end
 
-    it "プロフィールの編集に失敗する" do 
+    it "プロフィールの編集に失敗する" do
       click_link "編集する"
       fill_in "ユーザー名", with: ""
       click_button "更新する"
