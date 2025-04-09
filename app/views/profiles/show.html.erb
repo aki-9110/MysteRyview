@@ -3,20 +3,7 @@
   <h1 class="text-dullGold text-5xl font-header my-20">マイページ</h1>
 
   <%# ナビゲーションタブ %>
-  <div class="w-full md:w-2/3 max-w-3xl flex justify-between mb-6">
-    <div class="text-dullGold underline underline-offset-8 decoration-gold">
-      <%= link_to t(".profile"), profile_path %>
-    </div>
-    <div class="text-dullGold underline underline-offset-8 decoration-gold">
-      <%= link_to t(".my_posts"), "" %>
-    </div>
-    <div class="text-dullGold underline underline-offset-8 decoration-gold">
-      <%= link_to t(".my_likes"), "" %>
-    </div>
-    <div class="text-dullGold underline underline-offset-8 decoration-gold">
-      <%= link_to t(".notifications"), "" %>
-    </div>
-  </div>
+  <%= render "nav_tab" %>
 
   <%# プロフィールカード %>
   <div class="w-full md:w-2/3 max-w-3xl bg-darkBlue rounded-lg p-8">
@@ -24,7 +11,7 @@
 
     <div class="flex justify-center mb-10">
       <% if @user.avatar.attached? %>
-        <%= image_tag @user.avatar, class: 'w-[128px] h-[128px] sm:w-16 sm:h-16 border border-gray-300 rounded-full' %>
+        <%= image_tag @user.avatar, class: "w-[128px] h-[128px] border border-gray-300 rounded-full" %>
       <% else %>
         <i class="fa-solid fa-circle-user fa-8x" style="color: #e0e0e0;"></i>
       <% end %>

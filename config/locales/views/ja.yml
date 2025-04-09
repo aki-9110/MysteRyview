@@ -66,14 +66,16 @@ ja:
       success: "いいねを外しました"
   profiles:
     show:
-      title: "マイページ"
       profile: "プロフィール"
-      my_posts: "自分の投稿"
-      my_likes: "いいねした投稿"
-      notifications: "通知"
+      title: "マイページ"
       name: "ユーザー名:"
       email: "メールアドレス:"
       edit: "編集する"
     edit:
       title: "プロフィール編集"
       update: "更新する"
+    nav_tab:
+      profile: "プロフィール"
+      my_posts: "自分の投稿"
+      my_likes: "いいねした投稿"
+      notifications: "通知"
