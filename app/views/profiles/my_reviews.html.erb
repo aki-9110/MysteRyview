@@ -5,9 +5,9 @@
   <%# ナビゲーションタブ %>
   <%= render "nav_tab" %>
 
-  <%# プロフィールカード %>
+  <%# 自分の投稿一覧 %>
   <div class="w-full md:w-2/3 max-w-5xl bg-darkBlue rounded-lg p-8">
-    <div class="mt-[80px] max-w-5xl mx-auto">
+    <div class="my-[60px] max-w-5xl mx-auto">
       <% if @reviews.present? %>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
           <% @reviews.each do |review| %>
@@ -17,8 +17,8 @@
       <% else %>
         <div class="text-dullGold text-center"><%= t(".nothing") %></div>
       <% end %>
+    </div>
   </div>
 
-
-  </div>
+  <%= paginate @reviews %>
 </div>
