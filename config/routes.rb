@@ -19,7 +19,11 @@ Rails.application.routes.draw do
 
   resources :likes, only: %i[create destroy]
 
-  resource :profile, only: %i[edit show update destroy]
+  resource :profile, only: %i[edit show update destroy] do
+    collection do
+      get :my_reviews
+    end
+  end
 
   get "up" => "rails/health#show", as: :rails_health_check
 

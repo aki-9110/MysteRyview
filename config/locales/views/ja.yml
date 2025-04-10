@@ -76,6 +76,8 @@ ja:
       update: "更新する"
     nav_tab:
       profile: "プロフィール"
-      my_posts: "自分の投稿"
+      my_reviews: "自分の投稿"
       my_likes: "いいねした投稿"
       notifications: "通知"
+    my_reviews:
+      title: "自分の投稿"
