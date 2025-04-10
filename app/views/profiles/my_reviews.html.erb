@@ -1,2 +1,24 @@
 <% content_for(:title, t('.title')) %>
-<h1 class="text-dullGold">hello</h1>
+<div class="flex-1 px-4 py-8 flex flex-col items-center">
+  <h1 class="text-dullGold text-5xl font-header my-20"><%= t(".title") %></h1>
+
+  <%# ナビゲーションタブ %>
+  <%= render "nav_tab" %>
+
+  <%# プロフィールカード %>
+  <div class="w-full md:w-2/3 max-w-5xl bg-darkBlue rounded-lg p-8">
+    <div class="mt-[80px] max-w-5xl mx-auto">
+      <% if @reviews.present? %>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <% @reviews.each do |review| %>
+            <%= render "reviews/review", review: review %>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="text-dullGold text-center"><%= t(".nothing") %></div>
+      <% end %>
+  </div>
+
+
+  </div>
+</div>
