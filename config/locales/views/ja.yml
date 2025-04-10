@@ -81,3 +81,4 @@ ja:
       notifications: "通知"
     my_reviews:
       title: "自分の投稿"
+      nothing: "投稿がありません"
