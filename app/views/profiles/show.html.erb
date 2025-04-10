@@ -1,6 +1,6 @@
 <% content_for(:title, t('.title')) %>
 <div class="flex-1 px-4 py-8 flex flex-col items-center">
-  <h1 class="text-dullGold text-5xl font-header my-20">マイページ</h1>
+  <h1 class="text-dullGold text-5xl font-header my-20"><%= t(".title") %></h1>
 
   <%# ナビゲーションタブ %>
   <%= render "nav_tab" %>
@@ -19,11 +19,11 @@
 
     <div class="space-y-6 mb-10">
       <div class="flex items-center">
-        <span class="text-dullGold w-36">ユーザー名:</span>
+        <span class="text-dullGold w-36"><%= t(".name") %></span>
         <span class="text-lightGray"><%= @user.name %></span>
       </div>
       <div class="flex items-center">
-        <span class="text-dullGold w-36">メールアドレス:</span>
+        <span class="text-dullGold w-36"><%= t(".email") %></span>
         <span class="text-lightGray"><%= @user.email %></span>
       </div>
     </div>
