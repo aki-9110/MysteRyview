@@ -15,6 +15,10 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def my_reviews
+    @reviews = current_user.reviews.includes(:book).order(created_at: :desc).page(params[:page])
+  end
+
   private
 
   def set_user
