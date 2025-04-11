@@ -11,10 +11,6 @@ Rails.application.routes.draw do
     member do
       get :spoiler
     end
-
-    collection do
-      get :likes
-    end
   end
 
   resources :likes, only: %i[create destroy]
@@ -22,6 +18,7 @@ Rails.application.routes.draw do
   resource :profile, only: %i[edit show update destroy] do
     collection do
       get :my_reviews
+      get :my_likes
     end
   end
 

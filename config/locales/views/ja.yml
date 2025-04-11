@@ -82,3 +82,6 @@ ja:
     my_reviews:
       title: "自分の投稿"
       nothing: "投稿がありません"
+    my_likes:
+      title: "いいねした投稿"
+      noting: "いいねした投稿がありません"
