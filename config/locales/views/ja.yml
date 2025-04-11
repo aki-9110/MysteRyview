@@ -33,16 +33,16 @@ ja:
       inquiry: '問い合わせ'
       privacy: プライバシーポリシー
       terms: 利用規約
+    review:
+      book_title: "書籍: "
+      author: "著者: "
+      show_review: "レビューを見る"
   reviews:
     index:
       title: "投稿一覧"
       nothing: "投稿がありません"
     new:
       title: "レビューを書く"
-    review:
-      book_title: "書籍: "
-      author: "著者: "
-      show_review: "レビューを見る"
     non_spoiler:
       review: "感想・レビュー"
       annotation: "※このレビューにはネタバレが含まれていません"
@@ -82,3 +82,6 @@ ja:
     my_reviews:
       title: "自分の投稿"
       nothing: "投稿がありません"
+    my_likes:
+      title: "いいねした投稿"
+      noting: "いいねした投稿がありません"
