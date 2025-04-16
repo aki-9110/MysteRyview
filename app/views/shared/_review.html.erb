@@ -4,7 +4,7 @@
     <% if review.image.attached? %>
       <%= image_tag review.image, class: "w-[108px] h-[150px]" %>
     <% else %>
-      <%= image_tag "eyecatch.png", class: "w-[108px] h-[150px]" %>
+      <%= image_tag "eyecatch.png", class: 'h-48 w-full object-cover' %>
     <% end %>
     <div class="flex flex-justify-center my-3">
       <div>

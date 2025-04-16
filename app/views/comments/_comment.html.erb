@@ -3,13 +3,20 @@
     <div class="rounded-md flex flex-col">
       <div class="border-b border-dullGold mb-4">
         <div class="flex items-center mb-4">
-          <div class="w-8 h-8 bg-[#d9d9d9] rounded-full mr-3"></div>
-          <span class="text-lightGray"><%= comment.user.name %></span>
+          <div class="flex justify-center my-3 min-w-fit">
+            <div>
+              <% if comment.user.avatar.attached? %>
+                <%= image_tag comment.user.avatar, class: "w-[32px] h-[32px] border border-gray-300 rounded-full" %>
+              <% else %>
+                <i class="fa-solid fa-circle-user fa-2x" style="color: #e0e0e0;"></i>
+              <% end %>
+            </div>
+            <div class="text-lightGray text-center flex items-center ml-2">
+              <%= comment.user.name %>
+            </div>
+          </div>
           <div class="flex justify-end w-full">
             <% if current_user.own?(comment) %>
-              <%= link_to "#" do %>
-                <i class="fa-solid fa-pen-to-square text-dullGold fa-xl mr-5"></i>
-              <% end %>
               <%= link_to "#", data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') } do %>
                 <i class="fa-solid fa-trash-can text-dullGold fa-xl"></i>
               <% end %>
