@@ -15,6 +15,9 @@
               <%= comment.user.name %>
             </div>
           </div>
+
+          <%# MVPリリース時にコメント削除機能を実装 %>
+          <!--
           <div class="flex justify-end w-full">
             <% if current_user.own?(comment) %>
               <%= link_to "#", data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') } do %>
@@ -22,6 +25,7 @@
               <% end %>
             <% end %>
           </div>
+          -->
         </div>
       </div>
 
