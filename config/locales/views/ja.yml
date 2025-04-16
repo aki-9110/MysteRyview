@@ -41,6 +41,7 @@ ja:
     top:
       new_reviews: "新着投稿"
       nothing: "新着投稿はありません"
+      show_more: "もっと見る"
   reviews:
     index:
       title: "投稿一覧"

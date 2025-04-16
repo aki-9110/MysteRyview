@@ -2,6 +2,7 @@
   <h1 class="text-4xl text-green-700 font-header underline">Hello,world</h1>
   <button class="btn btn-primary">Hello daisyUI!</button>
 
+  <%# 新着投稿 %>
   <div class="my-20 w-full md:w-2/3 max-w-6xl bg-darkBlue rounded-lg p-8 mx-auto">
     <h1 class="text-dullGold text-center text-4xl font-header"><%= t(".new_reviews") %></h1>
 
@@ -15,6 +16,9 @@
       <% else %>
         <div class="text-dullGold text-center"><%= t(".nothing") %></div>
       <% end %>
+    </div>
+    <div class="text-dullGold hover:opacity-70 text-center mt-8 underline underline-offset-2">
+      <%= link_to t(".show_more"), reviews_path %>
     </div>
   </div>
 </div>

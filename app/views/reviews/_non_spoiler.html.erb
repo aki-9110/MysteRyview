@@ -6,9 +6,7 @@
       <% if review.image.attached? %>
         <%= image_tag review.image, class: "w-[196px] h-[273px]" %>
       <% else %>
-        <div class="w-[196px] h-[273px] bg-lightGray mb-7">
-          本の画像
-        </div>
+        <%= image_tag "eyecatch.png", class: "w-[196px] h-[273px]" %>
       <% end %>
     </div>
 
@@ -39,9 +37,12 @@
       </div>
     </div>
 
+    <%# MVPリリース時に実装 %>
+    <%#
     <div class="mb-4 text-center">
       <span class="text-[#d4b886]">#タグ, #タグ</span>
     </div>
+     %>
 
     <div class="flex justify-center mb-4">
       <% if current_user && current_user.own?(review) %>
