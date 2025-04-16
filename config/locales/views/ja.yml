@@ -37,6 +37,11 @@ ja:
       book_title: "書籍: "
       author: "著者: "
       show_review: "レビューを見る"
+  tops:
+    top:
+      new_reviews: "新着投稿"
+      nothing: "新着投稿はありません"
+      show_more: "もっと見る"
   reviews:
     index:
       title: "投稿一覧"
@@ -84,4 +89,4 @@ ja:
       nothing: "投稿がありません"
     my_likes:
       title: "いいねした投稿"
-      noting: "いいねした投稿がありません"
+      nothing: "いいねした投稿がありません"

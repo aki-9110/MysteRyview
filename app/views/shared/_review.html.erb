@@ -4,9 +4,7 @@
     <% if review.image.attached? %>
       <%= image_tag review.image, class: "w-[108px] h-[150px]" %>
     <% else %>
-      <div class="w-[108px] h-[150px] bg-lightGray mb-7">
-        本の画像
-      </div>
+      <%= image_tag "eyecatch.png", class: 'h-48 w-full object-cover' %>
     <% end %>
     <div class="flex flex-justify-center my-3">
       <div>

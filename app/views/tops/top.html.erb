@@ -1,3 +1,31 @@
-<h1 class="text-4xl text-green-700 font-header underline">Hello,world</h1>
-<button class="btn btn-primary">Hello daisyUI!</button>
+<div>
+  <div>
+    <h1 class="text-7xl text-center font-header my-20 text-dullGold">MysteRyview</h1>
+  </div>
+  <div class="text-center text-lightGray font-text">
+    <p class="my-2">"MysteRyview"はミステリー小説の感想が投稿できるレビュー・書評サービスです。</p>
+    <p class="my-2">気になる小説のネタバレを気にせずレビューを閲覧できます。</p>
+    <p class="my-2">さらにもう読んだことのある小説はネタバレ感想を共有できます。</p>
+  </div>
+
+  <%# 新着投稿 %>
+  <div class="my-20 w-full md:w-2/3 max-w-6xl bg-darkBlue rounded-lg p-8 mx-auto">
+    <h1 class="text-dullGold text-center text-4xl font-header"><%= t(".new_reviews") %></h1>
+
+    <div class="mt-[80px] max-w-5xl mx-auto">
+      <% if @new_reviews.present? %>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <% @new_reviews.each do |review| %>
+            <%= render "shared/review", review: review %>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="text-dullGold text-center"><%= t(".nothing") %></div>
+      <% end %>
+    </div>
+    <div class="text-dullGold hover:opacity-70 text-center mt-8 underline underline-offset-2">
+      <%= link_to t(".show_more"), reviews_path %>
+    </div>
+  </div>
+</div>
 

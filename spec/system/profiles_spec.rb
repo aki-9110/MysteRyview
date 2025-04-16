@@ -47,4 +47,23 @@ RSpec.describe "Profiles", type: :system do
       expect(page).not_to have_content(review_by_user2.book.title)
     end
   end
+
+  describe "いいねした投稿一覧" do
+    context "1件もいいねしていない場合" do
+      it "いいねしていない旨のメッセージが表示される" do
+        click_link "いいねした投稿"
+        sleep 0.5
+        expect(page).to have_content("いいねした投稿がありません")
+      end
+    end
+
+    context "いいねした投稿がある場合" do
+      it "いいねした投稿が表示される" do
+        create(:like, user: user, review: review_by_user2)
+        click_link "いいねした投稿"
+        sleep 0.5
+        expect(page).to have_content(review_by_user2.book.title)
+      end
+    end
+  end
 end
