@@ -32,10 +32,40 @@ RSpec.describe "Comments", type: :system do
         expect(page).to have_content "sample_comment"
       end
 
-      it "コメントの作成に失敗する" do
-        fill_in "コメント", with: ""
-        click_button "コメントする"
-        expect(page).to have_content "コメントの投稿に失敗しました"
+      context "入力が空の場合" do
+        it "コメントの作成に失敗する" do
+          fill_in "コメント", with: ""
+          click_button "コメントする"
+          expect(page).to have_content "コメントを入力してください"
+        end
+      end
+
+      context "入力が1文字の場合" do
+        it "コメントの作成に失敗する" do
+          fill_in "コメント", with: "a"
+          click_button "コメントする"
+          expect(page).to have_content "コメントは2文字以上で入力してください"
+        end
+      end
+    end
+
+    describe "コメントの削除" do
+      context "自分のコメントの場合" do
+        it "コメントが削除できる" do
+          accept_confirm I18n.t("defaults.delete_confirm") do
+            sleep 0.5
+            find("i.fa-solid.fa-trash-can.text-dullGold.fa-xl").click
+          end
+          expect(page).not_to have_content(comment_by_user1.content)
+        end
+      end
+
+      context "他人のコメントの場合" do
+        it "コメント削除ボタンが表示されない" do
+          within "#comment-#{comment_by_user2.id}" do
+            expect(page).not_to have_selector("i.fa-solid.fa-trash-can.text-dullGold.fa-xl")
+          end
+        end
       end
     end
   end
