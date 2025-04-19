@@ -2,15 +2,12 @@ class LikesController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    review = Review.find(params[:review_id])
-    current_user.like(review)
-    redirect_to request.referer, success: t(".success")
+    @review = Review.find(params[:review_id])
+    current_user.like(@review)
   end
 
   def destroy
-    like = current_user.likes.find(params[:id])
-    review = like.review
-    like.destroy!
-    redirect_to request.referer, success: t(".success"), status: :see_other
+    @review = current_user.likes.find(params[:id]).review
+    current_user.unlike(@review)
   end
 end
