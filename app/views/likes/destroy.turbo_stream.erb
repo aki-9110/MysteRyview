@@ -1,0 +1,9 @@
+<%= turbo_stream.replace "unlike-button-for-review-#{@review.id}" do %>
+  <%= render 'likes/like', review: @review %>
+<% end %>
+
+<%= turbo_stream.replace "review-#{@review.id}-likes-count" do %>
+  <div id="review-<%= @review.id %>-likes-count" class="text-lightGray text-xl mb-4 ml-2">
+    <%= @review.likes.count %>
+  </div>
+<% end %>

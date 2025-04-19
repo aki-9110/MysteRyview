@@ -1,0 +1,3 @@
+<%= link_to likes_path(review_id: review.id), data: { turbo_method: :post }, id: "like-button-for-review-#{review.id}" do %>
+  <i class="fa-regular fa-thumbs-up fa-xl" style="color: #eed9b6;"></i>
+<% end %>
