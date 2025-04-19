@@ -1,8 +1,8 @@
-<div class="max-w-6xl mx-auto px-4 py-8 flex flex-col md:flex-row gap-8 mt-10 justify-center">
-  <div class="w-full md:w-2/3 bg-darkBlue p-6 rounded-md">
-    <div class="rounded-md flex flex-col">
+<div id="comment-<%= comment.id %>">
+  <div class="max-w-6xl mx-auto px-4 py-8 flex flex-col md:flex-row gap-8 justify-center">
+    <div class="w-full md:w-2/3 bg-darkBlue p-6 rounded-md flex flex-col">
       <div class="border-b border-dullGold mb-4">
-        <div class="flex items-center mb-4">
+        <div class="flex items-center mb-2">
           <div class="flex justify-center my-3 min-w-fit">
             <div>
               <% if comment.user.avatar.attached? %>
@@ -16,16 +16,13 @@
             </div>
           </div>
 
-          <%# MVPリリース時にコメント削除機能を実装 %>
-          <!--
           <div class="flex justify-end w-full">
             <% if current_user.own?(comment) %>
-              <%= link_to "#", data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') } do %>
+              <%= link_to comment_path(comment), data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') } do %>
                 <i class="fa-solid fa-trash-can text-dullGold fa-xl"></i>
               <% end %>
             <% end %>
           </div>
-          -->
         </div>
       </div>
 

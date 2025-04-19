@@ -1,6 +1,7 @@
-<div class="max-w-6xl mx-auto px-4 py-8 flex flex-col items-center">
+<div class="max-w-6xl mx-auto px-4 py-8 flex flex-col items-center" id="comment-form">
   <div class="w-full md:w-2/3">
     <%= form_with model: comment, url: review_comments_path(review) do |f| %>
+      <%= render "shared/error_messages", object: f.object %>
       <%= f.label :content, class: "text-dullGold font-header block mb-2" %>
       <%= f.text_area :content, class: "form-control bg-lightGray border border-gray-200 rounded-lg px-3 py-2 w-full", rows: "4", placeholder: "コメントを入力して下さい" %>
       <div class="flex justify-end mt-4">
