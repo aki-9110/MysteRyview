@@ -34,10 +34,12 @@
 </div>
 
 <%# コメントフォーム %>
-<%= render 'comments/form', comment: @comment, review: @review %>
+<%= render "comments/form", comment: @comment, review: @review %>
 
 <%# コメント一覧 %>
-<%= render @comments %>
+<div id="table-comment">
+  <%= render @comments %>
+</div>
 
 <div class="space-x-4 flex justify-center mt-20 mb-40">
   <%= link_to t(".index"), reviews_path, class: "btn bg-goldBeige text-darkNavy px-6 py-2 rounded hover:bg-goldBeige" %>
