@@ -19,7 +19,7 @@
       <div class="field mx-auto mt-7">
         <%= f.label :password, class: "text-dullGold" %>
         <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <em class="text-dullGold">※<%= @minimum_password_length %>文字以上</em>
         <% end %><br />
         <%= f.password_field :password, autocomplete: "new-password", class: "bg-lightGray w-md px-3 py-2 mt-1 rounded-lg" %>
       </div>
