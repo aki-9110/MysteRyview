@@ -51,6 +51,8 @@ gem "aws-sdk-s3", require: false
 
 gem "kaminari"
 
+gem "dotenv-rails", groups: [ :development, :test ]
+
 group :test do
   gem "capybara"
   gem "selenium-webdriver"
