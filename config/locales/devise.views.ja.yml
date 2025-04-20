@@ -34,10 +34,12 @@ ja:
         message: "ログイン失敗が繰り返されたため、アカウントはロックされています。"
     passwords:
       edit:
+        title: "パスワードの変更"
         change_my_password: "パスワードを変更する"
         change_your_password: "パスワードを変更"
-        confirm_new_password: "確認用新しいパスワード"
+        confirm_password: "新しいパスワード(確認用)"
         new_password: "新しいパスワード"
+        submit: "変更する"
       new:
         title: "パスワード再設定"
         description: "登録しているメールアドレスをご入力ください。"
