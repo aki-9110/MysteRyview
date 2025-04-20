@@ -39,6 +39,10 @@ ja:
         confirm_new_password: "確認用新しいパスワード"
         new_password: "新しいパスワード"
       new:
+        title: "パスワード再設定"
+        description: "登録しているメールアドレスをご入力ください。"
+        description_2: "パスワード再設定のご案内を送信いたします。"
+        submit: "送信"
         forgot_your_password: "パスワードを忘れましたか?"
         send_me_reset_password_instructions: "パスワードの再設定方法を送信する"
     registrations:
