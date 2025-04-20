@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   root "tops#top"
 
   devise_for :users, controllers: {
-    registrations: "users/registrations"
+    registrations: "users/registrations",
+    password: "users/passwords"
   }
 
   resources :reviews do
