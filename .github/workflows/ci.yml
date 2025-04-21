@@ -55,6 +55,10 @@ jobs:
         ports:
           - 4444:4444
 
+    env:
+      RAILS_ENV: test
+      PORT: 3000
+
     steps:
       - name: Install packages
         run: sudo apt-get update && sudo apt-get install --no-install-recommends -y google-chrome-stable curl libjemalloc2 libvips postgresql-client
