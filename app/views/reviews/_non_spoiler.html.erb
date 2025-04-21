@@ -22,7 +22,7 @@
       <div class="text-lightGray text-xl mb-4">星5評価: <%= review.rating %></div>
     </div>
 
-    <div class="flex justify-center mb-4">
+    <div class="flex justify-center">
       <div class="flex">
         <% unless current_user && current_user.own?(review) %>
           <%= render "likes/like_button", { review: review } %>
@@ -37,12 +37,11 @@
       </div>
     </div>
 
-    <%# MVPリリース時に実装 %>
-    <%#
-    <div class="mb-4 text-center">
-      <span class="text-[#d4b886]">#タグ, #タグ</span>
+    <div class="flex mb-4 justify-center">
+      <% review.tags.each do |tag| %>
+        <%= link_to tag.name, reviews_path(tag_name: tag.name), class: "badge rounded-xl bg-goldBeige text-darkNavy py-1 px-1 mx-1" %>
+      <% end %>
     </div>
-     %>
 
     <div class="flex justify-center mb-4">
       <% if current_user && current_user.own?(review) %>
