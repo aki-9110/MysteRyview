@@ -20,6 +20,8 @@ RSpec.describe "Comments", type: :system do
 
     describe "コメントの一覧" do
       it "コメントの一覧が表示される" do
+        puts "Capybara.app_host: #{Capybara.app_host}"
+        puts "Rails server running on: #{Capybara.server_host}:#{Capybara.server_port}"
         expect(page).to have_content(comment_by_user1.content)
         expect(page).to have_content(comment_by_user2.content)
       end
