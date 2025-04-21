@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_04_07_071456) do
+ActiveRecord::Schema[7.2].define(version: 2025_04_21_071411) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -70,6 +70,16 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_07_071456) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
+  create_table "review_tags", force: :cascade do |t|
+    t.bigint "review_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["review_id", "tag_id"], name: "index_review_tags_on_review_id_and_tag_id", unique: true
+    t.index ["review_id"], name: "index_review_tags_on_review_id"
+    t.index ["tag_id"], name: "index_review_tags_on_tag_id"
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.text "non_spoiler_text", null: false
     t.text "spoiler_text"
@@ -82,6 +92,13 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_07_071456) do
     t.index ["book_id"], name: "index_reviews_on_book_id"
     t.index ["rating"], name: "index_reviews_on_rating"
     t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -104,6 +121,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_07_071456) do
   add_foreign_key "comments", "users"
   add_foreign_key "likes", "reviews"
   add_foreign_key "likes", "users"
+  add_foreign_key "review_tags", "reviews"
+  add_foreign_key "review_tags", "tags"
   add_foreign_key "reviews", "books"
   add_foreign_key "reviews", "users"
 end
