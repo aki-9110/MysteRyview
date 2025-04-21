@@ -14,11 +14,23 @@ class Review < ApplicationRecord
 
   has_one_attached :image
 
+  # bookのパラメータを含めてreviewを作成するメソッド
+  def self.build_with_book(params)
+    book = Book.find_or_create_by(title: params[:book_title], author: params[:book_author])
+    new(params.except(:book_title, :book_author).merge(book: book))
+  end
+
+  # bookパラメータを含めてReviewを更新するメソッド
+  def update_with_book(params)
+    book = Book.find_or_create_by(title: params[:book_title], author: params[:book_author])
+    update(params.except(:book_title, :book_author).merge(book: book))
+  end
+
   def self.ransackable_associations(auth_object = nil)
     [ "book" ]
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    [ "created_at", "id", "updated_at" ]
+    [ "id", "created_at", "updated_at" ]
   end
 end
