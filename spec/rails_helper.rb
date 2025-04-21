@@ -71,11 +71,19 @@ RSpec.configure do |config|
   config.include LoginMacros
 
   config.before(:each, type: :system) do
-    driven_by :remote_chrome
-    Capybara.server_host = IPSocket.getaddress(Socket.gethostname)
-    Capybara.server_port = 4444
-    Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"
-    Capybara.ignore_hidden_elements = false
+    # CI環境（GitHub Actions）とローカル環境の切り替え
+    if ENV['CI'] == 'true'
+      driven_by :remote_chrome
+      Capybara.server_host = '0.0.0.0'
+      Capybara.server_port = 3000
+      Capybara.app_host = "http://selenium:3000"
+    else
+      driven_by :remote_chrome
+      Capybara.server_host = IPSocket.getaddress(Socket.gethostname)
+      Capybara.server_port = 4444
+      Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"
+      Capybara.ignore_hidden_elements = false
+    end
   end
 
   # arbitrary gems may also be filtered via:
