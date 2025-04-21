@@ -12,7 +12,7 @@ class Review < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :review_tags, dependent: :destroy
-  has_many :tag, through: :review_tags
+  has_many :tags, through: :review_tags
 
   has_one_attached :image
 
@@ -21,6 +21,9 @@ class Review < ApplicationRecord
 
   before_validation :set_tag  # 保存前に仮想属性をセット
   after_save :save_tags # 保存後にタグを処理する
+
+  # 特定のタグを取得する
+  scope :with_tag, ->(tag_name) { joins(:tags).where(tags: {name: tag_name}) }
 
   # エラー時に入力内容を保持するために保存前に既存のタグをtag_namesにセットする
   def set_tag
@@ -38,6 +41,15 @@ class Review < ApplicationRecord
     tag_list.each do |tag_name|
       tag = Tag.find_or_create_by(name: tag_name)
       self.tags << tag unless self.tags.include?(tag)
+    end
+  end
+
+  # tagのパラメータを受け取ってそのtagを含むreviewを返すメソッド
+  def self.include_tag(params)
+    if (tag_name = params)
+      self.with_tag(tag_name)
+    else
+      self.all
     end
   end
 

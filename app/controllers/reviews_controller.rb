@@ -3,8 +3,9 @@ class ReviewsController < ApplicationController
   before_action :set_review, only: [ :edit, :update ]
 
   def index
+    review_tag = Review.include_tag(params[:tag_name])
     @q = Review.ransack(params[:q])
-    @reviews = @q.result(distinct: true).includes(:user, :book).order(created_at: :desc).page(params[:page])
+    @reviews = @q.result(distinct: true).includes(:user, :book).merge(review_tag).order(created_at: :desc).page(params[:page])
   end
 
   def new
@@ -59,6 +60,6 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:book_title, :book_author, :non_spoiler_text, :spoiler_text, :foreshadowing, :rating, :image)
+    params.require(:review).permit(:book_title, :book_author, :non_spoiler_text, :spoiler_text, :foreshadowing, :rating, :image, :tag_names)
   end
 end

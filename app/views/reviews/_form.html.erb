@@ -20,6 +20,10 @@
     <%= f.label :foreshadowing, class: "text-dullGold font-header block mb-2" %>
     <%= f.text_area :foreshadowing, class: "form-control bg-dustyRose border border-gray-200 rounded-lg w-full px-3 py-2 textarea", placeholder: "自分で気づいた伏線はありますか？\n・ページ数\n・何行目" %>
   </div>
+  <div class="field mb-20">
+    <%= f.label :tag_names, class: "text-dullGold font-header block mb-2" %>
+    <%= f.text_field :tag_names, placeholder: ",で区切って入力してください", class: "form-control bg-lightGray border border-gray-200 rounded-lg w-full px-3 py-2" %>
+  </div>
   <div class="mb-20">
     <%= f.label :rating, class: "text-dullGold font-header block mb-2" %>
     <%= f.number_field :rating, min: 1, max: 5, class: "bg-lightGray", required: true, value: 1 %>

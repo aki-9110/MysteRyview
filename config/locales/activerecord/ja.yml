@@ -10,6 +10,7 @@ ja:
         non_spoiler_text: 感想・レビュー（ネタバレなし）
         spoiler_text: 感想・レビュー★ネタバレあり
         foreshadowing: 気づいた伏線（未入力でも可）
+        tag_names: タグ（未入力でも可）
         rating: 評価 (1〜5)
         image: 本の画像
       book:
