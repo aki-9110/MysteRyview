@@ -39,7 +39,7 @@
 
     <div class="flex mb-4 justify-center">
       <% review.tags.each do |tag| %>
-        <%= link_to tag.name, reviews_path(tag_name: tag.name), class: "badge rounded-xl bg-goldBeige text-darkNavy py-1 px-1" %>
+        <%= link_to tag.name, reviews_path(tag_name: tag.name), class: "badge rounded-xl bg-goldBeige text-darkNavy py-1 px-1 mx-1" %>
       <% end %>
     </div>
 

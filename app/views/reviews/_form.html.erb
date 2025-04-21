@@ -22,7 +22,7 @@
   </div>
   <div class="field mb-20">
     <%= f.label :tag_names, class: "text-dullGold font-header block mb-2" %>
-    <%= f.text_field :tag_names, placeholder: ",で区切って入力してください", class: "form-control bg-lightGray border border-gray-200 rounded-lg w-full px-3 py-2" %>
+    <%= f.text_field :tag_names, placeholder: ",で区切って入力してください", value: @review.tag_names, class: "form-control bg-lightGray border border-gray-200 rounded-lg w-full px-3 py-2" %>
   </div>
   <div class="mb-20">
     <%= f.label :rating, class: "text-dullGold font-header block mb-2" %>

@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :review_tag do
-    review { nil }
-    tag { nil }
+    association :review
+    association :tag
   end
 end

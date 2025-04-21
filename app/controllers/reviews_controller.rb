@@ -29,6 +29,7 @@ class ReviewsController < ApplicationController
   end
 
   def edit
+    @review.set_tag
   end
 
 
