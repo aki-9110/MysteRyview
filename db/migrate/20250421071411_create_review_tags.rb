@@ -6,6 +6,6 @@ class CreateReviewTags < ActiveRecord::Migration[7.2]
 
       t.timestamps
     end
-    add_index :review_tags, [:review_id, :tag_id], unique: true
+    add_index :review_tags, [ :review_id, :tag_id ], unique: true
   end
 end

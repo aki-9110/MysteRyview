@@ -23,20 +23,20 @@ class Review < ApplicationRecord
   after_save :save_tags # 保存後にタグを処理する
 
   # 特定のタグを取得する
-  scope :with_tag, ->(tag_name) { joins(:tags).where(tags: {name: tag_name}) }
+  scope :with_tag, ->(tag_name) { joins(:tags).where(tags: { name: tag_name }) }
 
   # エラー時に入力内容を保持するために保存前に既存のタグをtag_namesにセットする
   def set_tag
-    self.tag_names ||= tags.map(&:name).join(', ')
+    self.tag_names ||= tags.map(&:name).join(", ")
   end
 
   def save_tags
     # tag_namesが未入力の状態なら処理を返す
     return if tag_names.blank?
-  
+
     # カンマ区切りの文字列を配列に変換する
-    tag_list = tag_names.split(',').map(&:strip).uniq
-  
+    tag_list = tag_names.split(",").map(&:strip).uniq
+
     # 既存のタグを取得し、なければ作成
     tag_list.each do |tag_name|
       tag = Tag.find_or_create_by(name: tag_name)
@@ -72,6 +72,4 @@ class Review < ApplicationRecord
   def self.ransackable_attributes(auth_object = nil)
     [ "id", "created_at", "updated_at" ]
   end
-
-
 end
