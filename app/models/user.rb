@@ -31,4 +31,14 @@ class User < ApplicationRecord
   def like?(review)
     like_reviews.include?(review)
   end
+
+  # Oauthでログインする時、すでに登録のあるメールアドレスの場合既存のアカウントを探し、そうでなけるばユーザーを認証または作成する
+  def self.from_omniauth(auth)
+    find_by(email: auth.info.email) ||
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+      user.name = auth.info.name
+      user.password = Devise.friendly_token[0, 20]
+    end
+  end
 end
