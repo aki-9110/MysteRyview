@@ -51,6 +51,10 @@ gem "aws-sdk-s3", require: false
 
 gem "kaminari"
 
+gem "omniauth"
+gem "omniauth-rails_csrf_protection"
+gem "omniauth-google-oauth2"
+
 gem "dotenv-rails", groups: [ :development, :test ]
 
 group :test do
