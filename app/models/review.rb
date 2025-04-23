@@ -66,7 +66,7 @@ class Review < ApplicationRecord
   end
 
   def self.ransackable_associations(auth_object = nil)
-    [ "book" ]
+    [ "book", "tags" ]
   end
 
   def self.ransackable_attributes(auth_object = nil)

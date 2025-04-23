@@ -4,7 +4,8 @@ class ReviewsController < ApplicationController
 
   def index
     review_tag = Review.include_tag(params[:tag_name])
-    @q = Review.ransack(params[:q])
+    # タグのついていない投稿も表示させるためにleft_outer_joins(外部結合)を利用
+    @q = Review.left_outer_joins(:tags).ransack(params[:q])
     @reviews = @q.result(distinct: true).includes(:user, :book).merge(review_tag).order(created_at: :desc).page(params[:page])
   end
 
