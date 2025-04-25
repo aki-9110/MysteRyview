@@ -13,6 +13,10 @@ Rails.application.routes.draw do
     member do
       get :spoiler
     end
+
+    collection do
+      get :autocomplete
+    end
   end
 
   resources :likes, only: %i[create destroy]

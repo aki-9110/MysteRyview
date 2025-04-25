@@ -1,0 +1,19 @@
+<%# すでに表示したタイトル・著者を配列で記録 %>
+<% titles = [] %>
+<% authors = [] %>
+
+<%# 同じ作品に関する投稿が複数あっても重複しないように表示させる %>
+<% @books.each do |book| %>
+  <% unless titles.include?(book.title) %>
+    <% titles << book.title %>
+    <li class="flex w-full items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-blue-200 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-blue-200 dark:hover:text-gray-300" role="option" data-autocomplete-value="<%= book.id %>" data-autocomplete-label="<%= book.title %>">
+      <%= book.title %>
+    </li>
+  <% end %>
+  <%  unless authors.include?(book.author) %>
+    <% authors << book.author %>
+    <li class="flex w-full items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-blue-200 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-blue-200 dark:hover:text-gray-300" role="option" data-autocomplete-value="<%= book.id %>" data-autocomplete-label="<%= book.author %>">
+      <%= book.author %>
+    </li>
+  <% end %>
+<% end %>

@@ -55,6 +55,14 @@ class ReviewsController < ApplicationController
     @comments = @review.comments.includes(:user).order(created_at: :desc)
   end
 
+  def autocomplete
+    # Bookモデルから取得したタイトル・著者の重複を除く
+    @books = Book.where("title LIKE :query OR author LIKE :query", query: "%#{params[:q]}%").distinct
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
 
   def set_review
