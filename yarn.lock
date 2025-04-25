@@ -525,6 +525,11 @@ picomatch@^2.3.1:
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.3.1.tgz#3ba3833733646d9d3e4995946c1365a67fb07a42"
   integrity sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==
 
+stimulus-autocomplete@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/stimulus-autocomplete/-/stimulus-autocomplete-3.1.0.tgz#7c9292706556ed0a87abf60ea2688bf0ea1176a8"
+  integrity sha512-SmVViCdA8yCl99oV2kzllNOqYjx7wruY+1OjAVsDTkZMNFZG5j+SqDKHMYbu+dRFy/SWq/PParzwZHvLAgH+YA==
+
 tailwindcss@4.0.15, tailwindcss@^4.0.15:
   version "4.0.15"
   resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-4.0.15.tgz#73933640624b4188fedb07492cd9b354643e6cb3"
