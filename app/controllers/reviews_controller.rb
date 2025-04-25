@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :authenticate_user!, except: [ :index, :show ]
+  before_action :authenticate_user!, except: [ :index, :show, :autocomplete ]
   before_action :set_review, only: [ :edit, :update ]
 
   def index
