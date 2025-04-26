@@ -2,7 +2,7 @@ class Review < ApplicationRecord
   validates :non_spoiler_text, presence: true, length: { maximum: 500 }
   validates :spoiler_text, length: { maximum: 1000 }
   validates :foreshadowing, length: { maximum: 500 }
-  validates :rating, presence: true, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }
+  validates :rating, presence: true
   validates :user_id, presence: true
   validates :book_id, presence: true
 
@@ -15,6 +15,15 @@ class Review < ApplicationRecord
   has_many :tags, through: :review_tags
 
   has_one_attached :image
+
+  # 星5評価のステータス
+  enum :rating, {
+    very_poor: 1,
+    poor: 2,
+    fair: 3,
+    good: 4,
+    excellent: 5
+  }
 
   # フォームからのタグの入力を仮想属性として受け取る
   attr_accessor :tag_names

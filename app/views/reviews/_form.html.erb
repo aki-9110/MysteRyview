@@ -26,7 +26,11 @@
   </div>
   <div class="mb-20">
     <%= f.label :rating, class: "text-dullGold font-header block mb-2" %>
-    <%= f.number_field :rating, min: 1, max: 5, class: "bg-lightGray", required: true, value: 1 %>
+    <div class="rating rating-lg flex justify-center space-x-2">
+      <% Review.ratings.each do |key, value| %>
+        <%= f.radio_button :rating, key, class: "mask mask-star-2 bg-goldBeige" %>
+      <% end %>
+    </div>
   </div>
   <div class="mb-20">
     <%= f.label :image, class: "text-dullGold font-header block mb-2" %>
