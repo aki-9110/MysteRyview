@@ -25,8 +25,8 @@
     <%= f.text_field :tag_names, placeholder: ",で区切って入力してください", value: @review.tag_names, class: "form-control bg-lightGray border border-gray-200 rounded-lg w-full px-3 py-2" %>
   </div>
   <div class="mb-20">
-    <%= f.label :rating, class: "text-dullGold font-header block mb-2" %>
-    <div class="rating rating-lg flex justify-center space-x-2">
+    <%= f.label :rating, class: "text-dullGold text-center font-header block mb-2" %>
+    <div class="rating rating-xl flex justify-center space-x-3">
       <% Review.ratings.each do |key, value| %>
         <%= f.radio_button :rating, key, class: "mask mask-star-2 bg-goldBeige" %>
       <% end %>
@@ -36,7 +36,7 @@
     <%= f.label :image, class: "text-dullGold font-header block mb-2" %>
     <%= f.file_field :image, class: "bg-lightGray file-input" %>
   </div>
-  <div class="actions">
-    <%= f.submit t(".post"), class: "btn btn-primary bg-goldBeige text-darkNavy" %>
+  <div class="actions flex justify-center">
+    <%= f.submit t(".post"), class: "btn btn-primary bg-goldBeige text-darkNavy block" %>
   </div>
 <% end %>
