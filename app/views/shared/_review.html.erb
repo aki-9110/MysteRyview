@@ -1,10 +1,10 @@
 <div class="bg-grayBlue rounded-lg p-4 flex">
-  <!-- カードの左側 -->
+  <!----- カードの左側 ----->
   <div class="mr-7 flex-shrink-0">
     <% if review.image.attached? %>
       <%= image_tag review.image, class: "w-[108px] h-[150px]" %>
     <% else %>
-      <%= image_tag "eyecatch.png", class: 'h-48 w-full object-cover' %>
+      <%= image_tag "eyecatch.png", class: "w-[108px] h-[150px]" %>
     <% end %>
     <div class="flex flex-justify-center my-3">
       <div>
@@ -30,11 +30,19 @@
     </div>
   </div>
 
-  <!-- カードの右側 -->
+  <!----- カードの右側 ----->
   <div class="flex flex-col flex-grow">
     <div class="text-lightGray text-xl mb-4"><%= t(".book_title") %><%= link_to review.book.title, reviews_path(q: { book_title_cont: review.book.title }), class: "hover:opacity-70" %></div>
     <div class="text-lightGray text-xl mb-4"><%= t(".author") %><%= link_to review.book.author, reviews_path(q: { book_author_cont: review.book.author }), class: "hover:opacity-70" %></div>
-    <div class="text-lightGray text-xl mb-4">星5評価: <%= review.rating %></div>
+    <div class="flex mb-8">
+      <div class="text-lightGray text-xl font-text"><%= t(".rating") %></div>
+      <div class="flex space-x-1 items-center ml-2">
+        <% Review.ratings.length.times do |index| %>
+          <span class='inline-block h-5 w-5 mask mask-star-2 <%= index < Review.ratings[review.rating] ? "bg-dullGold" : "bg-lightGray" %>' aria-hidden="true">
+          </span>
+        <% end %>
+      </div>
+    </div>
     <div class="flex justify-end">
       <% unless current_user && current_user.own?(review) %>
         <%= render "likes/like_button", { review: review } %>

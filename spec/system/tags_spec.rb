@@ -16,7 +16,7 @@ RSpec.describe "Tags", type: :system do
       fill_in "review[non_spoiler_text]", with: "すごかった！"
       fill_in "review[spoiler_text]", with: "犯人は〇〇です"
       fill_in "review[foreshadowing]", with: "右腕の傷"
-      fill_in "review[rating]", with: 5
+      choose "review[rating]", option: :excellent
       fill_in "review[tag_names]", with: "クローズド"
       click_button "投稿する"
       sleep 0.5

@@ -1,12 +1,14 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!, except: [ :index, :show, :autocomplete ]
-  before_action :set_review, only: [ :edit, :update ]
+  before_action :set_current_user_review, only: [ :edit, :update ]
+  before_action :set_review, only: [ :show, :spoiler ]
 
   def index
     review_tag = Review.include_tag(params[:tag_name])
     # タグのついていない投稿も表示させるためにleft_outer_joins(外部結合)を利用
     @q = Review.left_outer_joins(:tags).ransack(params[:q])
-    @reviews = @q.result(distinct: true).includes(:user, :book).merge(review_tag).order(created_at: :desc).page(params[:page])
+    @total_reviews_count = @q.result(distinct: true).count
+    @reviews = @q.result(distinct: true).includes({ user: { avatar_attachment: :blob } }, :book, :likes, image_attachment: :blob).merge(review_tag).order(created_at: :desc).page(params[:page])
   end
 
   def new
@@ -25,9 +27,7 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def show
-    @review = Review.includes(:user, :book).find(params[:id])
-  end
+  def show; end
 
   def edit
     @review.set_tag
@@ -50,9 +50,8 @@ class ReviewsController < ApplicationController
   end
 
   def spoiler
-    @review = Review.includes(:user, :book).find(params[:id])
     @comment = Comment.new
-    @comments = @review.comments.includes(:user).order(created_at: :desc)
+    @comments = @review.comments.includes({ user: { avatar_attachment: :blob } }).order(created_at: :desc)
   end
 
   def autocomplete
@@ -65,8 +64,12 @@ class ReviewsController < ApplicationController
 
   private
 
+  def set_current_user_review
+    @review = current_user.reviews.includes(:book).find(params[:id])
+  end
+
   def set_review
-    @review = current_user.reviews.includes(:user, :book).find(params[:id])
+    @review = Review.includes({ user: { avatar_attachment: :blob } }, :book, :likes, image_attachment: :blob).find(params[:id])
   end
 
   def review_params

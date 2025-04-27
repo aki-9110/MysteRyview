@@ -49,13 +49,7 @@ RSpec.describe Review, type: :model do
        it "ratingが空の場合、投稿に失敗する" do
         review.rating = ""
         expect(review).to be_invalid
-        expect(review.errors.full_messages).to include("評価 (1〜5)を入力してください")
-       end
-
-       it "ratingが6以上の場合、投稿に失敗する" do
-        review.rating = 6
-        expect(review).to be_invalid
-        expect(review.errors.full_messages).to include("評価 (1〜5)は5以下の値にしてください")
+        expect(review.errors.full_messages).to include("評価を入力してください")
        end
 
       it "user_idが空の場合、投稿に失敗する" do

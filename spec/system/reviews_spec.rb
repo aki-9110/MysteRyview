@@ -107,7 +107,7 @@ RSpec.describe "Reviews", type: :system do
         fill_in "review[non_spoiler_text]", with: "すごかった！"
         fill_in "review[spoiler_text]", with: "犯人は〇〇です"
         fill_in "review[foreshadowing]", with: "右腕の傷"
-        fill_in "review[rating]", with: 5
+        choose "review[rating]", option: :excellent
         click_button "投稿する"
         expect(page).to have_content "レビューを投稿しました"
         expect(current_path).to eq reviews_path
@@ -124,7 +124,7 @@ RSpec.describe "Reviews", type: :system do
         fill_in "review[non_spoiler_text]", with: ""
         fill_in "review[spoiler_text]", with: "犯人は〇〇です"
         fill_in "review[foreshadowing]", with: "右腕の傷"
-        fill_in "review[rating]", with: 5
+        choose "review[rating]", option: :excellent
         click_button "投稿する"
         expect(page).to have_content "入力に誤りがあります"
         expect(current_path).to eq new_review_path
@@ -134,20 +134,22 @@ RSpec.describe "Reviews", type: :system do
     context "レビューを編集する" do
       it "レビュー編集ページに遷移できる" do
         click_link "投稿一覧"
-        click_link href: edit_review_path(review)
+        find("i.fa-pen-to-square").click
+        sleep 0.5
         expect(page).to have_content "レビュー編集"
         expect(current_path).to eq edit_review_path(review)
       end
 
       it "レビューを編集できる" do
         click_link "投稿一覧"
-        click_link href: edit_review_path(review)
+        find("i.fa-pen-to-square").click
+        sleep 0.5
         fill_in "review[book_title]", with: "そして誰もいなくなった"
         fill_in "review[book_author]", with: "アガサクリスティー"
         fill_in "review[non_spoiler_text]", with: "すごかった！"
         fill_in "review[spoiler_text]", with: "犯人は〇〇です"
         fill_in "review[foreshadowing]", with: "右腕の傷"
-        fill_in "review[rating]", with: 5
+        choose "review[rating]", option: :excellent
         click_button "投稿する"
         expect(page).to have_content "レビューを更新しました"
         expect(current_path).to eq review_path(review)
@@ -177,7 +179,8 @@ RSpec.describe "Reviews", type: :system do
         accept_confirm "ネタバレが表示されますがよろしいですか？" do
           click_link "ネタバレ感想を見る"
         end
-        expect(page).not_to have_content review.spoiler_text
+        sleep 1
+        expect(page).to have_content review.spoiler_text
         expect(current_path).to eq spoiler_review_path(review)
       end
     end

@@ -16,11 +16,11 @@ class ProfilesController < ApplicationController
   end
 
   def my_reviews
-    @reviews = current_user.reviews.includes(:book).order(created_at: :desc).page(params[:page])
+    @reviews = current_user.reviews.includes({ user: { avatar_attachment: :blob } }, :book, :likes, image_attachment: :blob).order(created_at: :desc).page(params[:page])
   end
 
   def my_likes
-    @like_reviews = current_user.like_reviews.includes(:user, :book).order(created_at: :desc).page(params[:page])
+    @like_reviews = current_user.like_reviews.includes({ user: { avatar_attachment: :blob } }, :book, :likes, image_attachment: :blob).order(created_at: :desc).page(params[:page])
   end
 
   private
