@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
     # タグのついていない投稿も表示させるためにleft_outer_joins(外部結合)を利用
     @q = Review.left_outer_joins(:tags).ransack(params[:q])
     @total_reviews_count = @q.result(distinct: true).count
-    @reviews = @q.result(distinct: true).includes({user: { avatar_attachment: :blob }}, :book, :likes, image_attachment: :blob).merge(review_tag).order(created_at: :desc).page(params[:page])
+    @reviews = @q.result(distinct: true).includes({ user: { avatar_attachment: :blob } }, :book, :likes, image_attachment: :blob).merge(review_tag).order(created_at: :desc).page(params[:page])
   end
 
   def new
@@ -51,7 +51,7 @@ class ReviewsController < ApplicationController
 
   def spoiler
     @comment = Comment.new
-    @comments = @review.comments.includes({user: { avatar_attachment: :blob }}).order(created_at: :desc)
+    @comments = @review.comments.includes({ user: { avatar_attachment: :blob } }).order(created_at: :desc)
   end
 
   def autocomplete
@@ -69,7 +69,7 @@ class ReviewsController < ApplicationController
   end
 
   def set_review
-    @review = Review.includes({user: { avatar_attachment: :blob }}, :book, :likes, image_attachment: :blob).find(params[:id])
+    @review = Review.includes({ user: { avatar_attachment: :blob } }, :book, :likes, image_attachment: :blob).find(params[:id])
   end
 
   def review_params
