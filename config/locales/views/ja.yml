@@ -36,6 +36,7 @@ ja:
     review:
       book_title: "書籍: "
       author: "著者: "
+      rating: "評価: "
       show_review: "レビューを見る"
   tops:
     top:

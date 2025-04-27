@@ -34,8 +34,14 @@
   <div class="flex flex-col flex-grow">
     <div class="text-lightGray text-xl mb-4"><%= t(".book_title") %><%= link_to review.book.title, reviews_path(q: { book_title_cont: review.book.title }), class: "hover:opacity-70" %></div>
     <div class="text-lightGray text-xl mb-4"><%= t(".author") %><%= link_to review.book.author, reviews_path(q: { book_author_cont: review.book.author }), class: "hover:opacity-70" %></div>
-    <div class="flex justify-center mb-4 space-x-1">
-      
+    <div class="flex mb-8">
+      <div class="text-lightGray text-xl font-text"><%= t(".rating") %></div>
+      <div class="flex space-x-1 items-center ml-2">
+        <% Review.ratings.length.times do |index| %>
+          <span class='inline-block h-5 w-5 mask mask-star-2 <%= index < Review.ratings[review.rating] ? "bg-dullGold" : "bg-lightGray" %>' aria-hidden="true">
+          </span>
+        <% end %>
+      </div>
     </div>
     <div class="flex justify-end">
       <% unless current_user && current_user.own?(review) %>

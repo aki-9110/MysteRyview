@@ -18,8 +18,11 @@
       <p class="text-lightGray"><%= t(".author") %><%= link_to review.book.author, reviews_path(q: { book_author_cont: review.book.author }), class: "hover:opacity-70" %></p>
     </div>
 
-    <div class="flex mb-4 justify-center">
-      <div class="text-lightGray text-xl mb-4">星5評価: <%= review.rating %></div>
+    <div class="flex justify-center space-x-1 items-center mb-7">
+      <% Review.ratings.length.times do |index| %>
+        <span class='inline-block h-8 w-8 mask mask-star-2 <%= index < Review.ratings[review.rating] ? "bg-dullGold" : "bg-lightGray" %>' aria-hidden="true">
+        </span>
+      <% end %>
     </div>
 
     <div class="flex justify-center">
