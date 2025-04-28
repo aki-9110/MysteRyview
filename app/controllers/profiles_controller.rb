@@ -15,12 +15,19 @@ class ProfilesController < ApplicationController
     end
   end
 
+  # 自分が投稿したレビューを取得
   def my_reviews
     @reviews = current_user.reviews.includes({ user: { avatar_attachment: :blob } }, :book, :likes, image_attachment: :blob).order(created_at: :desc).page(params[:page])
   end
 
+  # 自分がいいねしたレビューを取得
   def my_likes
     @like_reviews = current_user.like_reviews.includes({ user: { avatar_attachment: :blob } }, :book, :likes, image_attachment: :blob).order(created_at: :desc).page(params[:page])
+  end
+
+  # 自分が受けた通知一覧を取得
+  def my_notifications
+    @notifications = current_user.passive_notifications.order(created_at: :desc).page(params[:page]).per(20)
   end
 
   private

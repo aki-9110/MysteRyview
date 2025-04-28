@@ -14,11 +14,11 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :like_reviews, through: :likes, source: :review
 
-  # 自分が起こした通知
+  # 自分が起こした通知 userのidと、notificationsテーブルのvisitor_idカラムが一致する通知を取得する
   has_many :active_notifications, class_name: "Notification", foreign_key: "visitor_id", dependent: :destroy
 
-  # 自分が受け取る通知
-  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+  # 自分が受け取る通知 userのidと、notificationsテーブルのvisited_idカラムが一致する通知を取得する
+  has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
 
   has_one_attached :avatar
 

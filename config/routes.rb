@@ -25,8 +25,10 @@ Rails.application.routes.draw do
     collection do
       get :my_reviews
       get :my_likes
+      get :my_notifications
     end
   end
+
 
   get "up" => "rails/health#show", as: :rails_health_check
 
