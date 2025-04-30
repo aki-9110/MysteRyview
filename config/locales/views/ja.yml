@@ -91,3 +91,7 @@ ja:
     my_likes:
       title: "いいねした投稿"
       nothing: "いいねした投稿がありません"
+    my_notifications:
+      title: "通知一覧"
+      nothing: "通知はありません"
+      like: "いいね"
