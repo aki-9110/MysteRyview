@@ -15,14 +15,14 @@
               <p class="text-lightGray">
                 <span class="text-dullGold"><%= notification.visitor.name %></span>
                 さんが
-                <%= link_to "あなたのレビュー", review_path(notification.notifiable.review), class: "text-dullGold text-dullGold underline underline-offset-dullGold hover:opacity-70" %>
+                <%= link_to "あなたのレビュー", notification_profile_path(notification: { id: notification.id }), class: "text-dullGold text-dullGold underline underline-offset-dullGold hover:opacity-70" %>
                 に
                 <span class="text-dullGold"><%= t(".#{notification.action}") %></span>
                 しました
               </p>
             </div>
             <div class="flex items-center justify-end">
-              <%= link_to "#" do %>
+              <%= link_to read_notification_profile_path(notification: { id: notification.id }) do %>
                 <i class="fa-solid fa-circle-xmark fa-xl" style="color: #eed9b6;"></i>
               <% end %>
             </div>
