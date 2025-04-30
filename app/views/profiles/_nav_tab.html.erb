@@ -8,7 +8,14 @@
   <div class="text-dullGold underline underline-offset-8 decoration-gold">
     <%= link_to t(".my_likes"), my_likes_profile_path %>
   </div>
-  <div class="text-dullGold underline underline-offset-8 decoration-gold">
-    <%= link_to t(".notifications"), "" %>
+  <div class="text-dullGold underline underline-offset-8 decoration-gold relative">
+    <%= link_to my_notifications_profile_path, class: "inline-block" do %>
+      <%= t(".notifications") %>
+      <% if @unread_notifications_count >= 1 %>
+        <span class="absolute top-0 right--1 inline-flex items-center justify-center px-1.5 py-1 text-xs font-bold leading-none text-white bg-red-600 rounded-full">
+          <%= @unread_notifications_count %>
+        </span>
+      <% end %>
+    <% end %>
   </div>
 </div>
