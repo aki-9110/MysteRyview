@@ -4,7 +4,7 @@ class Like < ApplicationRecord
 
   validates :user_id, uniqueness: { scope: :review_id }
 
-  # いいねがデータベースへ保存された後に通知を作成メソッドを実行
+  # いいねがデータベースへ保存された後に通知を作成するメソッドを実行
   after_create_commit :create_notification_like
 
   private
