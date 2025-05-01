@@ -4,6 +4,8 @@ class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :review
 
+  has_many :notifications, as: :notifiable, dependent: :destroy
+
   # コメントがデータベースへ保存された後に通知を作成するメソッドを実行
   after_create_commit :create_notification_comment
 
