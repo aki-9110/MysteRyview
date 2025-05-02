@@ -33,6 +33,8 @@ Rails.application.routes.draw do
 
   namespace :step_form do
     resources :books, only: %i[new create]
+    resources :non_spoilers, only: %i[new create]
+    resources :spoilers, only: %i[new]
   end
 
 

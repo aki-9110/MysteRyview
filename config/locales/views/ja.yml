@@ -99,5 +99,9 @@ ja:
   step_form:
     books:
       new:
-        title: "本の情報"
+        title: "本の情報を入力"
+        next: "次へ"
+    non_spoilers:
+      new:
+        title: "感想(ネタバレなし)を入力"
         next: "次へ"
