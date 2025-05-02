@@ -31,6 +31,10 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :step_form do
+    resources :books, only: %i[new create]
+  end
+
 
   get "up" => "rails/health#show", as: :rails_health_check
 

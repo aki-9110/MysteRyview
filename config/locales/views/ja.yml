@@ -96,3 +96,8 @@ ja:
       nothing: "通知はありません"
       like: "いいね"
       comment: "コメント"
+  step_form:
+    books:
+      new:
+        title: "本の情報"
+        next: "次へ"

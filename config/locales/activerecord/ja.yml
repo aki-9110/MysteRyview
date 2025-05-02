@@ -18,3 +18,7 @@ ja:
         author: 著者
       comment:
         content: コメント
+      step_form:
+        book:
+          title: 本のタイトル
+          author: 著者
