@@ -8,7 +8,7 @@ module StepForm
       @non_spoiler = StepForm::NonSpoiler.new(non_spoiler_params)
       if @non_spoiler.valid?
         session[:step_form].merge!({
-          non_spoiler: @non_spoiler
+          non_spoiler_text: @non_spoiler.non_spoiler_text
         })
         redirect_to new_step_form_spoiler_path, success: t('.success')
       else
@@ -20,7 +20,7 @@ module StepForm
     private
 
     def non_spoiler_params
-      params.require(:step_form_non_spoiler).permit(:non_spoiler)
+      params.require(:step_form_non_spoiler).permit(:non_spoiler_text)
     end
   end
 end

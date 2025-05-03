@@ -6,8 +6,8 @@
     <%= form_with model: @non_spoiler, url: step_form_non_spoilers_path, local: true do |f| %>
       <%= render "shared/error_messages", object: f.object, class: "mb-20" %>
       <div class="field mb-20">
-        <%= f.label :non_spoiler, class: "text-dullGold font-header block mb-2" %>
-        <%= f.text_area :non_spoiler, class: "form-control bg-lightGray border border-gray-200 rounded-lg w-full px-3 py-2 textarea h-60", placeholder: "感想・レビューを入力してください\n※ネタバレは含まないでください" %>
+        <%= f.label :non_spoiler_text, class: "text-dullGold font-header block mb-2" %>
+        <%= f.text_area :non_spoiler_text, class: "form-control bg-lightGray border border-gray-200 rounded-lg w-full px-3 py-2 textarea h-60", placeholder: "感想・レビューを入力してください\n※ネタバレは含まないでください" %>
       </div>
       <div class="actions flex justify-center">
         <%= f.submit t(".next"), class: "btn btn-primary bg-goldBeige text-darkNavy block" %>
