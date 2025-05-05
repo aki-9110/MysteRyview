@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     resources :books, only: %i[new create]
     resources :non_spoilers, only: %i[new create]
     resources :spoilers, only: %i[new create]
+    resources :additional_infos, only: %i[new create]
   end
 
 

@@ -1,0 +1,29 @@
+<h1 class="text-dullGold"><%= session[:step_form] %></h1>
+<% content_for(:title, t(".title")) %>
+<div class="flex-1">
+  <h1 class="text-dullGold text-center text-5xl font-header mt-20"><%= t(".title") %></h1>
+  <div class="container mx-auto mt-20 mb-20 px-6 md:px-32 py-6">
+    <%= form_with model: @additional_info, url: step_form_additional_infos_path, local: true do |f| %>
+      <%= render "shared/error_messages", object: f.object, class: "mb-20" %>
+      <div class="field mb-20">
+        <%= f.label :tag_names, class: "text-dullGold font-header block mb-2" %>
+        <%= f.text_field :tag_names, placeholder: ",で区切って入力してください", value: @additional_info.tag_names, class: "form-control bg-lightGray border border-gray-200 rounded-lg w-full px-3 py-2" %>
+      </div>
+      <div class="mb-20">
+        <%= f.label :rating, class: "text-dullGold text-center font-header block mb-2" %>
+        <div class="rating rating-xl flex justify-center space-x-3">
+          <% StepForm::AdditionalInfo::RATINGS.each do |key, value| %>
+            <%= f.radio_button :rating, value, class: "mask mask-star-2 bg-goldBeige" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="mb-20">
+        <%= f.label :image, class: "text-dullGold font-header block mb-2" %>
+        <%= f.file_field :image, class: "bg-lightGray file-input" %>
+      </div>
+      <div class="actions flex justify-center">
+        <%= f.submit t(".post"), class: "btn btn-primary bg-goldBeige text-darkNavy block" %>
+      </div>
+    <% end %>
+  </div>
+</div>
