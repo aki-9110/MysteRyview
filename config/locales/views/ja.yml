@@ -97,11 +97,29 @@ ja:
       like: "いいね"
       comment: "コメント"
   step_form:
+    step_progress:
+      book: "本の情報"
+      non_spoiler: "ネタバレなし"
+      spoiler: "ネタバレあり"
+      additional_info: "追加の情報"
     books:
       new:
         title: "本の情報を入力"
         next: "次へ"
+        required: "※必須"
     non_spoilers:
       new:
         title: "感想(ネタバレなし)を入力"
         next: "次へ"
+        required: "※必須"
+    spoilers:
+      new:
+        title: "感想(ネタバレあり)を入力"
+        next: "次へ"
+        any: "※任意"
+    additional_infos:
+      new:
+        title: "追加の情報を入力"
+        post: "投稿する"
+        any: "※任意"
+        required: "※必須"
