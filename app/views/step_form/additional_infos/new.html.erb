@@ -1,4 +1,11 @@
-<h1 class="text-dullGold"><%= session[:step_form] %></h1>
+<div class="text-lightGray flex justify-center mt-15">
+  <ul class="steps space-x-4">
+    <li class="step step-success text-dullGold">本の情報</li>
+    <li class="step step-success text-dullGold">ネタバレなし</li>
+    <li class="step step-success text-dullGold">ネタバレあり</li>
+    <li class="step step-success text-dullGold">その他の情報</li>
+  </ul>
+</div>
 <% content_for(:title, t(".title")) %>
 <div class="flex-1">
   <h1 class="text-dullGold text-center text-5xl font-header mt-20"><%= t(".title") %></h1>
