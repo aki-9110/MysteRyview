@@ -107,19 +107,31 @@ ja:
         title: "本の情報を入力"
         next: "次へ"
         required: "※必須"
+      create:
+        danger: "エラーが発生しました。入力内容を確認してください。"
+        success: "入力内容が正しく保存されました"
     non_spoilers:
       new:
         title: "感想(ネタバレなし)を入力"
         next: "次へ"
         required: "※必須"
+      create:
+        danger: "エラーが発生しました。入力内容を確認してください。"
+        success: "入力内容が正しく保存されました"
     spoilers:
       new:
         title: "感想(ネタバレあり)を入力"
         next: "次へ"
         any: "※任意"
+      create:
+        danger: "エラーが発生しました。入力内容を確認してください。"
+        success: "入力内容が正しく保存されました"
     additional_infos:
       new:
         title: "追加の情報を入力"
         post: "投稿する"
         any: "※任意"
         required: "※必須"
+      create:
+        danger: "エラーが発生しました。入力内容を確認してください。"
+        success: "レビューを作成しました"

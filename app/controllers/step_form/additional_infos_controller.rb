@@ -1,7 +1,7 @@
 module StepForm
   class AdditionalInfosController < ApplicationController
     def new
-      @additional_info = StepForm::AdditionalInfo.new
+      @additional_info = StepForm::AdditionalInfo.new(rating: "1")
     end
 
     def create
