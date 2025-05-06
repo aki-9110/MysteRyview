@@ -21,13 +21,13 @@ module StepForm
         @review = current_user.reviews.build_with_book(review_params)
         if @review.save
           session.delete(:step_form)
-          redirect_to reviews_path, success: t('.success')
+          redirect_to reviews_path, success: t(".success")
         else
-          flash.now[:danger] = t('.danger')
+          flash.now[:danger] = t(".danger")
           render :new, status: :unprocessable_entity
         end
       else
-        flash.now[:danger] = t('.danger')
+        flash.now[:danger] = t(".danger")
         render :new, status: :unprocessable_entity
       end
     end

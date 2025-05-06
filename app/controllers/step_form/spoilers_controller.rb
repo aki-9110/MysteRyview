@@ -13,7 +13,7 @@ module StepForm
           spoiler_text: @spoiler.spoiler_text,
           foreshadowing: @spoiler.foreshadowing
         })
-        redirect_to new_step_form_additional_info_path, success: t('.success')
+        redirect_to new_step_form_additional_info_path, success: t(".success")
       end
     end
 

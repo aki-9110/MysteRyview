@@ -13,9 +13,9 @@ module StepForm
           book_title: @book.title,
           book_author: @book.author
         }
-        redirect_to new_step_form_non_spoiler_path, success: t('.success')
+        redirect_to new_step_form_non_spoiler_path, success: t(".success")
       else
-        flash.now[:danger] = t('.danger')
+        flash.now[:danger] = t(".danger")
         render :new, status: :unprocessable_entity
       end
     end

@@ -12,9 +12,9 @@ module StepForm
         session[:step_form].merge!({
           non_spoiler_text: @non_spoiler.non_spoiler_text
         })
-        redirect_to new_step_form_spoiler_path, success: t('.success')
+        redirect_to new_step_form_spoiler_path, success: t(".success")
       else
-        flash.now[:danger] = t('.danger')
+        flash.now[:danger] = t(".danger")
         render :new, status: :unprocessable_entity
       end
     end
