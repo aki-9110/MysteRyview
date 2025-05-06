@@ -65,7 +65,7 @@ class Review < ApplicationRecord
   # bookのパラメータを含めてreviewを作成するメソッド
   def self.build_with_book(params)
     book = Book.find_or_create_by(title: params[:book_title], author: params[:book_author])
-    new(params.except(:book_title, :book_author).merge(book: book))
+    new(params.to_h.except(:book_title, :book_author).merge(book: book))
   end
 
   # bookパラメータを含めてReviewを更新するメソッド

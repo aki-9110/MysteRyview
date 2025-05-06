@@ -69,6 +69,7 @@ RSpec.configure do |config|
 
   config.include FactoryBot::Syntax::Methods
   config.include LoginMacros
+  config.include StepFormMacros
 
   config.before(:each, type: :system) do
     driven_by :remote_chrome

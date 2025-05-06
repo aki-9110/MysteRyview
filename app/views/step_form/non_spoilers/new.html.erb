@@ -1,0 +1,19 @@
+<%= render "step_form/step_progress", current_step: 1 %>
+<% content_for(:title, t(".title")) %>
+<div class="flex-1">
+  <h1 class="text-dullGold text-center text-5xl font-header mt-20"><%= t(".title") %></h1>
+  <div class="container mx-auto mt-20 mb-20 px-6 md:px-32 py-6">
+    <%= form_with model: @non_spoiler, url: step_form_non_spoilers_path, local: true do |f| %>
+      <%= render "shared/error_messages", object: f.object, class: "mb-20" %>
+      <div class="field mb-20">
+        <div class="flex items-center mb-2">
+          <%= f.label :non_spoiler_text, class: "text-dullGold font-header block" %><span class="text-goldBeige ml-1 text-sm"><%= t(".required") %></span>
+        </div>
+        <%= f.text_area :non_spoiler_text, class: "form-control bg-lightGray border border-gray-200 rounded-lg w-full px-3 py-2 textarea h-60", placeholder: "感想・レビューを入力してください\n※ネタバレは含まないでください" %>
+      </div>
+      <div class="actions flex justify-center">
+        <%= f.submit t(".next"), class: "btn btn-primary bg-goldBeige text-darkNavy block" %>
+      </div>
+    <% end %>
+  </div>
+</div>

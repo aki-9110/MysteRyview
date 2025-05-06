@@ -1,0 +1,13 @@
+<div class="text-lightGray flex justify-center mt-15">
+  <ul class="steps space-x-4">
+    <% steps = [ t(".book"), t(".non_spoiler"), t(".spoiler"), t(".additional_info")] %>
+    <% steps.each_with_index do |label, index| %>
+      <% class_name = if index <= current_step
+                        "step step-success text-dullGold"
+                      else
+                        "step"
+                      end %>
+      <li class="<%= class_name %>"><%= label %></li>
+    <% end %>
+  </ul>
+</div>

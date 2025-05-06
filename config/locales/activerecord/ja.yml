@@ -18,3 +18,21 @@ ja:
         author: 著者
       comment:
         content: コメント
+      step_form:
+        book:
+          title: 本のタイトル
+          author: 著者
+  activemodel:
+    attributes:
+      "step_form/book":
+        title: 本のタイトル
+        author: 著者
+      "step_form/non_spoiler":
+        non_spoiler_text: "感想・レビュー（ネタバレなし)"
+      "step_form/spoiler":
+        spoiler_text: "感想・レビュー（ネタバレあり)"
+        foreshadowing: "気づいた伏線"
+      "step_form/additional_info":
+        tag_names: "タグ"
+        rating: "評価"
+        image: "画像"

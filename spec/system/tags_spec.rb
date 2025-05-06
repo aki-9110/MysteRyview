@@ -11,13 +11,10 @@ RSpec.describe "Tags", type: :system do
     end
 
     it "タグが保存できる" do
-      fill_in "review[book_title]", with: "そして誰もいなくなった"
-      fill_in "review[book_author]", with: "アガサクリスティー"
-      fill_in "review[non_spoiler_text]", with: "すごかった！"
-      fill_in "review[spoiler_text]", with: "犯人は〇〇です"
-      fill_in "review[foreshadowing]", with: "右腕の傷"
-      choose "review[rating]", option: :excellent
-      fill_in "review[tag_names]", with: "クローズド"
+      step_form_book
+      step_form_non_spoiler
+      step_form_spoiler
+      fill_in "タグ", with: "クローズド"
       click_button "投稿する"
       sleep 0.5
       click_link "レビューを見る"
