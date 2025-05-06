@@ -1,5 +1,7 @@
 module StepForm
   class AdditionalInfosController < ApplicationController
+    before_action :authenticate_user!
+
     def new
       @additional_info = StepForm::AdditionalInfo.new(rating: "1")
     end

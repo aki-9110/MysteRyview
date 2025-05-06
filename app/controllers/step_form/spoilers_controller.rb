@@ -1,5 +1,7 @@
 module StepForm
   class SpoilersController < ApplicationController
+    before_action :authenticate_user!
+
     def new
       @spoiler = StepForm::Spoiler.new
     end
