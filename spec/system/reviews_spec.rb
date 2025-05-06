@@ -32,18 +32,18 @@ RSpec.describe "Reviews", type: :system do
 
     context "レビュー作成画面へアクセス" do
       it "ログイン画面へ遷移する" do
-        visit new_review_path
+        visit new_step_form_book_path
         expect(page).to have_content "ログインもしくはアカウント登録してください。"
         expect(current_path).to eq new_user_session_path
       end
 
       it "ログインするとレビュー作成画面へ遷移する" do
-        visit new_review_path
+        visit new_step_form_book_path
         fill_in "メールアドレス", with: user.email
         fill_in "パスワード", with: "password"
         click_button "ログイン"
         expect(page).to have_content "ログインしました。"
-        expect(current_path).to eq new_review_path
+        expect(current_path).to eq new_step_form_book_path
       end
     end
 
@@ -93,41 +93,73 @@ RSpec.describe "Reviews", type: :system do
   describe "ログイン後" do
     before { login(user) }
 
-    context "レビューを作成する" do
-      it "レビュー作成画面へ遷移する" do
+    describe "レビューの作成" do
+      before do
         click_link "レビューを書く"
-        expect(page).to have_content "本のタイトル"
-        expect(current_path).to eq new_review_path
+        sleep 0.5
       end
 
-      it "項目を入力するとレビューが作成される" do
-        click_link "レビューを書く"
-        fill_in "review[book_title]", with: "そして誰もいなくなった"
-        fill_in "review[book_author]", with: "アガサクリスティー"
-        fill_in "review[non_spoiler_text]", with: "すごかった！"
-        fill_in "review[spoiler_text]", with: "犯人は〇〇です"
-        fill_in "review[foreshadowing]", with: "右腕の傷"
-        choose "review[rating]", option: :excellent
-        click_button "投稿する"
-        expect(page).to have_content "レビューを投稿しました"
-        expect(current_path).to eq reviews_path
-        expect(page).to have_content "書籍: そして誰もいなくなった"
-        expect(page).to have_content "著者: アガサクリスティー"
-      end
-    end
+      context "本の情報" do
+        it "本の情報を保存できる" do
+          fill_in "本のタイトル", with: "そして誰もいなくなった"
+          fill_in "著者", with: "アガサクリスティー"
+          click_button "次へ"
+          expect(page).to have_content "入力内容が正しく保存されました"
+          expect(current_path).to eq new_step_form_non_spoiler_path
+        end
 
-    context "未入力の項目がある" do
-      it "投稿に失敗する" do
-        click_link "レビューを書く"
-        fill_in "review[book_title]", with: ""
-        fill_in "review[book_author]", with: ""
-        fill_in "review[non_spoiler_text]", with: ""
-        fill_in "review[spoiler_text]", with: "犯人は〇〇です"
-        fill_in "review[foreshadowing]", with: "右腕の傷"
-        choose "review[rating]", option: :excellent
-        click_button "投稿する"
-        expect(page).to have_content "入力に誤りがあります"
-        expect(current_path).to eq new_review_path
+        it "本の情報の保存に失敗する" do
+          fill_in "本のタイトル", with: ""
+          fill_in "著者", with: ""
+          click_button "次へ"
+          expect(page).to have_content "エラーが発生しました。入力内容を確認してください。"
+          expect(current_path).to eq new_step_form_book_path
+        end
+      end
+
+      context "感想(ネタバレなし)" do
+        it "感想(ネタバレなし)を保存できる" do
+          step_form_book
+          fill_in "感想・レビュー（ネタバレなし)", with: "すごかった！"
+          click_button "次へ"
+          sleep 0.5
+          expect(page).to have_content "入力内容が正しく保存されました"
+          expect(current_path).to eq new_step_form_spoiler_path
+        end
+
+        it "感想(ネタバレなし)を保存に失敗する" do
+          step_form_book
+          fill_in "感想・レビュー（ネタバレなし)", with: ""
+          click_button "次へ"
+          sleep 0.5
+          expect(page).to have_content "エラーが発生しました。入力内容を確認してください。"
+          expect(current_path).to eq new_step_form_non_spoiler_path
+        end
+      end
+
+      context "感想(ネタバレあり)" do
+        it "感想(ネタバレあり)を保存できる" do
+          step_form_book
+          step_form_non_spoiler
+          fill_in "感想・レビュー（ネタバレあり)", with: "犯人は〇〇です"
+          fill_in "気づいた伏線", with: "右腕の傷"
+          click_button "次へ"
+          sleep 0.5
+          expect(page).to have_content "入力内容が正しく保存されました"
+          expect(current_path).to eq new_step_form_additional_info_path
+        end
+      end
+
+      context "追加の情報" do
+        it "追加の情報を保存できる" do
+          step_form_book
+          step_form_non_spoiler
+          step_form_spoiler
+          fill_in "タグ", with: "クローズド"
+          click_button "投稿する"
+          expect(page).to have_content "レビューを作成しました"
+          expect(current_path).to eq reviews_path
+        end
       end
     end
 
